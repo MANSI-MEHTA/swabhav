@@ -1,0 +1,43 @@
+<html>
+
+<body>
+    <p id="constructor"></p>
+</body>
+<script>
+    function Person(first, last, age) {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.name = function () {
+            return this.firstName + " " + this.lastName
+        };
+    }
+    var name1 = new Person("varshil", "mehta", 22);
+
+    document.getElementById("constructor").innerHTML =
+        "My full name is " + name1.name();
+
+
+</script>
+<script>
+    function customer(){
+        var _name;
+        this.setName=function(name){
+            if(name.length>5)
+                _name=name;
+            else {
+                throw "not valid";
+            }
+        }
+        this.getName=function(){
+            return _name;
+        }
+
+    }
+    var customer1=new customer();
+    customer1.setName("abcdef");
+    console.log(customer1.getName());
+    console.log(customer1)
+    </script>
+
+</html>

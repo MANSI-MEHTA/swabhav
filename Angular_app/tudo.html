@@ -1,0 +1,47 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+    <div ng-app="info_app">
+        <section ng-controller="myController">
+            <input type="text" ng-model="todoInput" ng-keypress="checkEnterKeyIsPressed($event)">
+
+            <div ng-repeat="x in todolist">
+                <input type="checkbox" ng-model="x.done">
+                <span ng-bind="x.todoText"></span>
+            </div>
+            <p>
+                <button ng-click="remove()">Remove checked names</button>
+            </p>
+
+        </section>
+    </div>
+</body>
+<script>
+    angular.module('info_app', []).controller('myController', function ($scope) {
+
+        $scope.todolist = [{
+            todoText: "varshil",
+            done: false
+        }]
+        $scope.checkEnterKeyIsPressed = function ($event) {
+            var keyCode = $event.which || $event.keyCode;
+            if (keyCode === 13) {
+                $scope.todolist.push({ todoText: $scope.todoInput, done: false })
+                $scope.todoInput = "";
+            }
+
+        }
+        $scope.remove = function () {
+            var oldList = $scope.todolist;
+            $scope.todolist = [];
+            angular.forEach(oldList, function (x) {
+                if (!x.done) {
+                    $scope.todolist.push(x);
+                }
+            });
+        };
+    })
+</script>
+
+</html>

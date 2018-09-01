@@ -1,0 +1,21 @@
+package com.techlabs;
+
+import java.sql.*;
+
+public class TestSqlInjection {
+	private Connection conn;
+
+	public TestSqlInjection(Connection conn) {
+
+		this.conn = conn;
+	}
+
+	public void getStudentById(int rollno) {
+		try {
+			Statement stmt = conn.createStatement();
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+	}
+
+}

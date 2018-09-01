@@ -1,0 +1,33 @@
+<html>
+<div>
+    <form action="authentication.php" onsubmit="return validation()" method="post">
+        <label>UserName:</label>
+        <input type="text" id="name" name="name" placeholder="enter username">
+        <br>
+        <br>
+        <label>password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter passsword">
+        <br>
+        <input type="submit" id="submit" value="submit">
+
+    </form>
+    <script>
+        function validation() {
+            var name = document.getElementById("name").value;
+            var password = document.getElementById("password").value
+            if (name == "") {
+                alert("please fill first name");
+                return false;
+
+            }
+            if (password.length > 10) {
+                alert("please enter password properly");
+                return false;
+            }
+
+        }
+    </script>
+
+</div>
+
+</html>

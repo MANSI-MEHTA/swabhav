@@ -1,0 +1,44 @@
+<html>
+
+<body>
+    <h1 id="response"></h1>
+
+    <label>Enter Number</label>
+    <input type="number" id="num" value="">
+    <button id="button" onclick="fetchData()">click</button>
+    <ul id="myList">
+    </ul>
+    <script>
+        function fetchData() {
+            var input = document.getElementById("num");
+            var val = input.value;
+            display(val);
+            var URL = "http://numbersapi.com/" + val;
+            console.log(URL);
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    p.innerHTML = xhr.responseText;
+                }
+
+            }
+            xhr.open('GET', URL, true)
+            xhr.send()
+            function display(val) {
+                var ul = document.getElementById("mylist");
+            
+                var li=document.getElementById("li");
+                li.appendChild(li);
+             if (val % 2 == 0) {
+                    li.style.background = "red";
+                }
+                else {
+                    p.style.background = "green";
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

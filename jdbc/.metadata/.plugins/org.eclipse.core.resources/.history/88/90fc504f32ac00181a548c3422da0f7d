@@ -1,0 +1,8 @@
+package com.techlabs;
+
+public class CreateConnection {
+	private static CreateConnection object;
+private CreateConnection(){
+	
+}
+}

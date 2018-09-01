@@ -1,0 +1,116 @@
+{
+    "questionanswers": {
+        "questionanswer": [
+            {
+                "question": "Total of 5*8+4?",
+                "option": [
+                    45,
+                    44,
+                    46,
+                    47
+                ],
+                "ans": 44
+            },
+            {
+                "question": "Total of 5*8+5?",
+                "option": [
+                    45,
+                    49,
+                    46,
+                    47
+                ],
+                "ans": 45
+            },
+            {
+                "question": "Total of 5*8+6?",
+                "option": [
+                    45,
+                    44,
+                    46,
+                    48
+                ],
+                "ans": 46
+            },
+            {
+                "question": "Total of 5*8+7?",
+                "option": [
+                    51,
+                    44,
+                    50,
+                    47
+                ],
+                "ans": 47
+            },
+            {
+                "question": "Total of 5*8+8?",
+                "option": [
+                    48,
+                    50,
+                    51,
+                    52
+                ],
+                "ans": 48
+            },
+            {
+                "question": "Total of 5*8+9?",
+                "option": [
+                    50,
+                    49,
+                    51,
+                    45
+                ],
+                "ans": 49
+            },
+            {
+                "question": "Total of 5*8+10?",
+                "option": [
+                    52,
+                    54,
+                    50,
+                    48
+                ],
+                "ans": 50
+            },
+            {
+                "question": "Total of 5*8+11?",
+                "option": [
+                    54,
+                    51,
+                    55,
+                    48
+                ],
+                "ans": 51
+            },
+            {
+                "question": "Total of 5*8+12?",
+                "option": [
+                    50,
+                    51,
+                    52,
+                    49
+                ],
+                "ans": 52
+            },
+            {
+                "question": "Total of 5*8+13?",
+                "option": [
+                    53,
+                    49,
+                    50,
+                    52
+                ],
+                "ans": 53
+            },
+            {
+                "question": "Total of 5*8+14?",
+                "option": [
+                    53,
+                    54,
+                    50,
+                    52
+                ],
+                "ans": 54
+            }
+        ]
+    }
+}

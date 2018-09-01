@@ -1,0 +1,25 @@
+package com.techlabs;
+
+import java.sql.ResultSet;
+
+public class TestResultSet {
+	public void display(ResultSet rs) {
+		try{
+		while(rs.next()){
+			System.out.print(rs.getString("rollno")+",");
+			System.out.print(rs.getString("fname")+",");
+			System.out.print(rs.getString("lname")+",");
+			System.out.print(rs.getString("cgpi")+",");
+			System.out.print(rs.getString("gender")+",");
+			System.out.print(rs.getString("gender")+",");
+			
+			
+			
+			
+		}
+		}catch(Exception ex){
+			System.out.println(ex);
+		}
+	}
+
+}

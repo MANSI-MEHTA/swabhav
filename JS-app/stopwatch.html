@@ -1,0 +1,66 @@
+<html>
+    <body>
+        <div id="stopWatch">
+            <h1 id="hide">00:00:00</h1>
+            </div>
+            <button id="start">start</button>
+            <button id="stop">stop</button>
+            <button id="reset">reset</button>
+        
+    </body>
+    <script>
+        (function(){
+        var second=0;
+        var hour=0;
+        var minute=0;
+        var time;
+        var start=document.getElementById("start");
+        start.addEventListener("click",startWatch)
+        var stop=document.getElementById("stop");
+        stop.addEventListener("click",stopWatch)
+        var reset=document.getElementById("reset");
+        reset.addEventListener("click",resetWatch)
+        
+        var h1=document.createElement("h1");
+        var div=document.getElementById("stopWatch");
+        var hide=document.getElementById("hide")
+        
+        div.appendChild(h1);
+        
+        function startWatch(){
+            hide.innerHTML="";
+            timer();
+
+        }
+        function stopWatch(){
+            clearTimeout(time);
+        }
+        
+        function resetWatch(){
+            h1.innerHTML="00:00:00";
+            second=0;
+            hour=0;
+            minute=0;
+        }
+        function changeTime(){
+            second++;
+            if(second>=60){
+                second=0;
+                minute++;
+                if(minute>=60){
+                    minute=0;
+                    hour++;
+
+                }
+            }
+            h1.innerHTML=(hour ? (hour > 9 ? hour : "0" + hour) : "00") + 
+            ":" + (minute ? (minute > 9 ? minute : "0" + minute) : "00") + 
+            ":" + (second > 9 ? second : "0" + second);
+            timer();
+        }
+        function timer(){
+            time=setTimeout(changeTime,1000);
+        }
+        }());
+    </script>
+</html>

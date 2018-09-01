@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <script src="angular.js"></script>
+    <script src="angular-route.js"></script>
+    <script src="studentapp.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        #searchresultclass {
+            border: 3px solid #f1f1f1;
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" ng-app="student_app">
+        <div ng-controller="homeController">
+            <nav class="navbar navbar-default" style="height:25px">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a class="active page-scroll btn  " style="color:blue" href="#/">Home</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll btn  " style="margin-left:5px;color:blue" href="#add/">Add student</a>
+                            </li>
+                            <li>
+                                <a ng-show="!authenticated" class="page-scroll btn" style="margin-left:5px;color:blue" href="#login/">Login</a>
+
+
+                            </li>
+                            <li>
+                                <a ng-show="authenticated" class="page-scroll btn" style="margin-right:50px;color:blue" href="#logout/">Logout {{currentUser}}</a>
+                            </li>
+                            <div class="row">
+                                <div class="col-xs-5" style="margin-top:8px">
+                                    <div class="input-group">
+                                        <input type="text" ng-model="searchname" ng-change="filterNames()" class="form-control" placeholder="Search">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-primary" ng-click="filterNames()" type="submit">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+            <div ng-show="searchresult !=''" id="searchresultclass">
+                <ul>
+                    <div ng-repeat="key in searchResult track by $index">
+                        <li>{{key}}</li>
+                    </div>
+                </ul>
+            </div>
+            <section ng-view>
+            </section>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

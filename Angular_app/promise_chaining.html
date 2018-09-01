@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+</head>
+
+<body>
+    <div ng-app="Math_app">
+        <section ng-controller="MathController">
+
+        </section>
+    </div>
+</body>
+<script>
+    angular.module('Math_app', []).controller('MathController', function ($scope, MathService, $log) {
+        console.log("Cube of 4 is " + MathService.cubeEvenNumber(4));
+        MathService.cubeOddNumber(3).then((result) => {
+            $log.log("cube of 3 is " + result);
+        }).catch((error) => {
+            $log.log(error)
+        })
+        $log.log("end of scope of controller")
+
+    })
+        .factory('MathService', function ($log, $q) {
+            $log.log("Inside math service");
+            const object = {};
+            object.cubeEvenNumber = ((number) => {
+                return number * number * number;
+            })
+            object.cubeOddNumber = ((number) => {
+                return $q((resolve, reject) => {
+                    if (number % 2 == 0) {
+                        reject("error: Number is not odd")
+                    } else {
+                        resolve(number * number * number);
+                    }
+                })
+            })
+            return object;
+        })
+    console.log("end of script")
+</script>
+
+</html>

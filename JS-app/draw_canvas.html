@@ -1,0 +1,36 @@
+<html>
+    <body>
+        <canvas id="myCanvas" width="578" height="200"> </canvas>
+        <script>
+            var  canvas=document.getElementById("myCanvas");
+            var context=canvas.getContext("2d");
+            var centerX = canvas.width / 2;
+            var centerY = canvas.height / 2;
+            var radius = 70;
+
+            context.beginPath();
+            context.arc(centerX,centerY,radius,0,270,false)
+            context.fillStyle="green";
+            context.fill();    
+
+            context.closePath();
+
+            context.beginPath();
+            context.moveTo(centerX,centerY);
+            context.lineTo(centerX+radius,centerY);
+            context.closePath();
+
+            context.beginPath();
+            context.moveTo(centerX,centerY);
+            context.lineTo(centerX,radius+centerY);
+            context.closePath();
+
+
+            context.arc(centerX,centerY,radius,270,360 ,true)
+            context.closePath();
+            context.fillStyle="blue";
+            context.fill();  
+        </script>
+        
+    </body>
+</html>

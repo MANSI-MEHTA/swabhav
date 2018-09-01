@@ -1,0 +1,64 @@
+<html>
+
+<body>
+
+</body>
+<script>
+    var githubUser = [{
+        userID: 101,
+        respository: [{
+            OOAD: ["SRP commit", "OCP commit"]
+        },
+        {
+            Patterns: ["factory commit", "singleton commit"]
+        }]
+    }, {
+        userID: 102,
+        respository: [{
+            javascript: ["javascript commit 1", " javascript commit 2"]
+        },
+        {
+            jquery: ["jquery commit 1", " jquery commit 2"]
+
+        }]
+    }]
+    var dataService=function (){
+        var object={}
+        object.getUser=((ID)=>{
+            return new Promise((resolve,reject)=>{
+                githubUser.map((x)=>{
+                    if(x.userID==ID){
+                        resolve(x)
+                    }
+                })
+                reject("Error user not found");
+                
+            })
+        })
+        object.getRepository=((user)=>{
+            return new Promise((resolve)=>{
+                resolve(user.respository)
+            })
+        })
+        object.getCommit=((respository_index)=>{
+            return new Promise((resolve)=>{
+                resolve(respository_index)
+            })
+        })
+        return object;
+    }();
+    dataService.getUser(103).then((user)=>{
+        console.log(user)
+        return dataService.getRepository(user)
+    
+    }).then((repository)=>{
+        console.log(repository);
+        return dataService.getCommit(repository[0])
+    }).then((commits)=>{
+        console.log(commits)
+    }).catch((error)=>{
+        console.log(error)
+    })
+</script>
+
+</html>

@@ -1,0 +1,37 @@
+package com.techlabs.utility;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class CreateConnection {
+	private static CreateConnection object;
+
+	private CreateConnection() {
+
+	}
+
+	public static CreateConnection getInstanceOf() {
+		if (object == null) {
+			object = new CreateConnection();
+		}
+		return object;
+	}
+
+	public Connection getConnection() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Connection conn = DriverManager
+					.getConnection("jdbc:mysql://localhost:4040/swabhav?"
+							+ "user=root&password=root");
+			System.out.println("connection is successfull");
+			System.out.println("Concrete class name of connection class is: "
+					+ conn.getClass());
+			
+			return conn;
+		} catch (Exception ex) {
+			System.out.println(ex);
+			return null;
+		}
+	}
+
+}

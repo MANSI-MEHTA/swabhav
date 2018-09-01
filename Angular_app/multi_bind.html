@@ -1,0 +1,72 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<head>
+    <style>
+        .red {
+            background: red;
+        }
+
+        .blue {
+            background: blue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div ng-app="info_app">
+        <section ng-controller="bindController">
+            <label>Message</label>
+            <input type="text" ng-model="message" value="">
+            <br>
+            <br>
+            <label>background</label>
+            <select ng-model="background">
+                <option>red</option>
+                <option>blue</option>
+            </select>
+            <br>
+            <br>
+            <label>Foreground</label>
+            <select ng-model="foreground" ng-change="myFunction()">
+                <option value="white">white</option>
+                <option value="black">black</option>
+            </select>
+            <br>
+            <br>
+            <label>font Size </label>
+            <input type="range" min="0" max="100" ng-value="" ng-model="size" ng-change="myFunction()">
+            <br>
+            <br>
+            <label>font_style</label>
+            <select ng-model="font_style" ng-change="myFunction()">
+                <option value="normal">normal</option>
+                <option value=" italic">  italic</option>
+                <option value="oblique">oblique</option>
+            </select>
+            <br>
+            <br>
+            <div ng-class="background" style="height:100;display:inline-block" >
+                <h1 ng-style="mytext">{{message}}</h1>
+            </div>
+        </section>
+    </div>
+</body>
+<script>
+    angular.module('info_app', []).controller('bindController', function ($scope) {
+        $scope.foreground = "";
+        $scope.size = 10;
+        $scope.font_style="normal"
+        $scope.myFunction = function () {
+            $scope.mytext = {
+                "color": $scope.foreground,
+                "font-size": $scope.size,
+                "font-style":$scope.font_style
+            }
+
+        }
+    });
+</script>
+
+</html>

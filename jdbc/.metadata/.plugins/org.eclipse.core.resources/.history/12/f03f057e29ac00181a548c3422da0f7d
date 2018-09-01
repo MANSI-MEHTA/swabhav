@@ -1,0 +1,36 @@
+package com.techlabs;
+
+import java.sql.*;
+
+public class TestConnection {
+
+	public static void main(String args[]) {
+		Statement stmt=null;
+		ResultSet rs=null;
+		DatabaseMetaData md=null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/swabhav?"
+					+ "user=root&password=root");
+			
+			if(conn!=null){
+				System.out.println("connection is successfull");
+			}
+			System.out.println("DataBase Name is:"+conn.getCatalog());
+			
+			/*stmt=conn.createStatement();
+			//System.out.println();
+			rs=stmt.executeQuery("show tables");
+			System.out.println(rs);*/
+			
+			md=conn.getMetaData();
+			rs=md.getTables(null, null,"departname", null);
+			while(rs.next()){
+				System.out.println(rs.getString(3));
+			}
+		
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+	}
+}

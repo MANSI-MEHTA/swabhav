@@ -1,0 +1,40 @@
+<article>
+    <div>
+        <h1>Students Records are:</h1>
+        <br>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tr>
+                <th>RollNo</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>CGPI</th>
+                <th>Gender</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr ng-repeat="x in students">
+                <td>{{x.rollno}}</td>
+                <td>{{x.fname}}</td>
+                <td>{{x.lname}}</td>
+                <td>{{x.cgpi}}</td>
+                <td>{{x.gender}}</td>
+                <td>
+                    <a  ng-show="!authenticated" href="#login" class="btn btn-primary">-</a>
+                    <a  ng-show="authenticated" href="#edit/{{x.rollno}}" class="btn btn-primary">EDIT</a>
+
+
+
+                </td>
+                <td>
+                    <a ng-show="authenticated" href="#delete/{{x.rollno}}" class="btn btn-danger">Delete</a>
+                    <a ng-show="!authenticated" href="#login" class="btn btn-danger">X</a>
+
+                </td>
+
+            </tr>
+
+        </table>
+    </div>
+</article>

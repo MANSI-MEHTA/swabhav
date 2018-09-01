@@ -1,0 +1,211 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .red {
+            background-color: red;
+        }
+
+        .white {    
+            background-color: white;
+        }
+
+        .pink {
+            background-color: pink
+        }
+
+        .blue {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" ng-app="student.api">
+        <section ng-controller="StudentController">
+
+            <form name="StudentForm" ng-submit="displayInTable()">
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Age*:</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" ng-model="student.age" placeholder="Enter Age" value="" ng-class="{red:StudentForm.age.$touched,white:StudentForm.age.$valid}"
+                            name="age" required>
+                    </div>
+                    <span ng-show="StudentForm.age.$touched && StudentForm.age.$invalid" style="color: red">Age is required*</span>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Date*</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" ng-model="student.date" placeholder="DD/MM/YYYY" value="" name="date" ng-class="{red:StudentrForm.date.$touched,white:StudentForm.date.$valid}">
+                    </div>
+                    <span ng-show="StudentForm.date.$touched && StudentForm.date.$invalid" style="color: red">Date is required*</span>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Email*:</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" ng-model="student.email" placeholder="Email id" value="" ng-class="{red:StudentForm.email.$touched,white:StudentForm.email.$valid}"
+                            name="email" required>
+                    </div>
+                    <span ng-show="StudentForm.email.$touched && StudentForm.email.$invalid" style="color: red">Email-id is required*</span>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Name*:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="student.name" placeholder="Enter Name" value="" ng-class="{red:StudentForm.name.$touched,white:StudentForm.name.$valid}"
+                            name="name" required>
+                    </div>
+                    <span ng-show="StudentForm.name.$touched && StudentForm.name.$invalid" style="color: red">Name is required*</span>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Roll NO*:</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" ng-model="student.rollNO" placeholder="Enter Roll No" value="" ng-class="{red:StudentForm.roll.$touched,white:studentForm.roll.$valid}"
+                            name="roll" required>
+                    </div>
+                    <span ng-show="StudentForm.roll.$touched && StudentForm.roll.$invalid" style="color: red">Roll_no is required*</span>
+                </div>
+                <br>
+                <br>
+                <div class="form-group">
+                    <label class="control-label col-lg-4">Gender*:</label>
+                    <input type="radio" name="gender" value="male" ng-model="student.gender">Male
+                    <input type="radio" name="gender" value="female" ng-model="student.gender">Female
+                </div>
+
+                <div class="col-sm-2" class="form-group" ng-init="disableSubmitButton=true">
+                    <input class="form-control btn btn-primary" ng-disabled="disableSubmitButton" type="submit">
+                </div>
+                <div class="col-sm-12"></div>
+            </form>
+            <br>
+            <br>
+            <img src="spinner.gif" ng-show="loading" width: "150px" height="150px">
+            <div class="table-responsive">
+                <table ng-init="showtable=false" ng-show="showtable" class="table table-bordered">
+                    <tr>
+                        <th>Age</th>
+                        <th>Date</th>
+                        <th>Email ID</th>
+                        <th>Name</th>
+                        <th>Roll_No</th>
+                        <th>Gender</th>
+                    </tr>
+                    <tr ng-repeat="x in studentDetails" class="{{x.isMale|genderToColor}}">
+                        <td>{{x.age}}</td>
+                        <td>{{x.date}}</td>
+                        <td>{{x.email}}</td>
+                        <td>{{x.name}}</td>
+                        <td>{{x.rollNo}}</td>
+                        <td>{{x.isMale|BooleanToGender}}</td>
+
+
+                    </tr>
+
+                </table>
+            </div>
+        </section>
+    </div>
+
+</body>
+<script>
+    angular.module('student.api', []).controller('StudentController', function ($scope, studentservice, $log) {
+        $scope.studentDetails = [];
+        $scope.temp = true;
+        $scope.student = {};
+        $scope.loading = true
+
+        $scope.displayInTable = function () {
+            $scope.loading = true;
+            studentservice.pushStudent($scope.student, $scope.temp).then(message => console.log(message))
+                .catch(error => console.log(error))
+                .finally(() => {
+                    $scope.loading = false
+                    $scope.disableSubmitButton = false;
+                })
+
+
+        }
+        studentservice.getStudents().then((response) => {
+            $scope.studentDetails = response;
+        }).catch((error) => {
+            $log.log(error);
+        }).finally(() => {
+            $scope.loading = false
+            $scope.disableSubmitButton = false;
+            $scope.showtable=true
+        })
+
+    }).filter('genderToColor', function () {
+        return function (input) {
+            if (input) {
+                return "blue";
+            }
+
+            else {
+                return "pink"
+            }
+        }
+    }).filter('BooleanToGender', function () {
+        return function (input) {
+            if (input) {
+                return "Male";
+            }
+
+            else {
+                return "Female";
+            }
+        }
+    }).factory('studentservice', function ($log, $q, $http, $timeout) {
+        const object = {};
+        object.getStudents = (() => {
+            return $q((resolve, reject) => {
+                $timeout(() => {
+                    $http.get("http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students").then(response => {
+                        if (response.status !== 404) {
+
+                            resolve(response.data);
+                        }
+                        else {
+                            reject("error");
+                        }
+                    }).catch(error => console.log(error))
+                }, 2000)
+            })
+
+        })
+        object.pushStudent = ((student, temp) => {
+            if (student.isMale == "male") {
+                student.isMale = temp;
+            }
+            else {
+                student.isMale = (!temp);
+            }
+            return $q((resolve, reject) => {
+                $timeout(() => {
+                    $http({
+                        method: 'POST',
+                        url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students",
+                        data: student
+                    }).then(response => {
+                        resolve("data send to server");
+                    }).catch(() => {
+                        reject("an error occured")
+                    })
+                }, 4000)
+            })
+        })
+        return object;
+
+    });
+
+</script>
+
+</html>

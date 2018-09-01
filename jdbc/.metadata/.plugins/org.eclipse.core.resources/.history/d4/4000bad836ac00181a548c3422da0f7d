@@ -1,0 +1,26 @@
+package com.techlabs;
+
+import java.sql.ResultSet;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
+
+public class TestStatement {
+	private java.sql.Statement stmt = null;
+	private Connection conn;
+
+	public TestStatement(Connection conn) {
+		this.conn = conn;
+	}
+
+	public ResultSet getStatementForSelect(){
+		try{
+			ResultSet result=null;
+		stmt=conn.createStatement();
+		result=stmt.executeQuery("selct * from Student");
+		return result;
+		}catch(Exception ex){
+			System.out.println(ex);
+		}
+	}
+}

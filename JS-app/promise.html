@@ -1,0 +1,36 @@
+<html>
+
+<body>
+    <script>
+        var dataService = function () {
+            var object = {};
+            object.getData = function () {
+                return new Promise((resolve, reject) => {
+                    var r = Math.floor(Math.random() * 10)
+                    if (r > 5) {
+                        resolve(r);
+                    }
+                    else {
+                        reject("error " + r);
+                    }
+                })
+
+            }
+            return object;
+
+        }();
+        dataService.getData().then(function (r) {
+            console.log("1st calling " + r)
+            return dataService.getData()
+        }, function (r) {
+            console.log("1 calling " + r)
+            return dataService.getData()
+        }).then((r) => {
+            console.log("2nd calling " + r)
+        }, (r) => {
+            console.log("2nd calling " + r)
+        })
+    </script>
+</body>
+
+</html>

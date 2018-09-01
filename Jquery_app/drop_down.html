@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body id="body">
+    <select id="dropdown">
+        <option>select one color</option>
+    </select>
+</body>
+<script>
+    $(document).ready(function () {
+            var id = $("body").find("#dropdown")
+            console.log(id);
+            id.append('<option value="#FF0000">red</option>')
+            id.append('<option value="#ADD8E6">blue</option>')
+            id.append('<option value="#98FB98">green</option>')
+            id.change(function () {
+                var color = id.val();
+                console.log(color);
+                $("#body").css("background-color", color);
+
+    
+        });
+    });
+
+</script>
+
+</html>

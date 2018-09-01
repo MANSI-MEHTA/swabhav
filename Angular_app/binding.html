@@ -1,0 +1,50 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+    <div ng-app="info_app">
+
+
+        <section ng-controller="bindingController">
+            <h4>first name: {{personalInformation.firstName}}</h4>
+            <h4>last name: {{personalInformation.lastName}}</h4>
+            <h4>age: {{personalInformation.age}}</h4>
+
+
+            <hr>
+
+            <label>FirstName</label>
+            <input type="text" ng-model="personalInformation.firstName">
+            <br>
+            <br>
+            <label>lastName</label>
+            <input type="text" ng-model="personalInformation.lastName">
+            <br>
+            <br>
+            <label>Age</label>
+            <input type="number" ng-model="personalInformation.age">
+            <br>
+            <br>
+
+
+            <hr>
+            <p>firstName:{{::personalInformation.firstName}}</p>
+            <p>LastName:{{::personalInformation.lastName}}</p>
+            
+
+
+        </section>
+    </div>
+    <script>
+        angular.module('info_app', []).controller('bindingController', function ($scope) {
+            $scope.personalInformation = {
+                firstName: "varshil",
+                lastName: "mehta",
+                age: 21
+
+            }
+        })
+    </script>
+</body>
+
+</html>

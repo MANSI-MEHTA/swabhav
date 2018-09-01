@@ -1,0 +1,16 @@
+package com.techlabs;
+
+import java.sql.ResultSet;
+
+public class TestResultSet {
+	public void display(ResultSet rs) {
+		try{
+		while(rs.next()){
+			
+		}
+		}catch(Exception ex){
+			System.out.println(ex);
+		}
+	}
+
+}

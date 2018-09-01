@@ -1,0 +1,15 @@
+package com.techlabs;
+
+public class CreateConnection {
+	private static CreateConnection object;
+
+	private CreateConnection() {
+
+	}
+	public static CreateConnection getInstanceOf(){
+		if(object==null){
+			object=new CreateConnection();
+		}
+		return object;
+	}
+}

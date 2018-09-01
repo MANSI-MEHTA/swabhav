@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" id="textInTextField" value="">
+    <button id="submit">Send a Request</button>
+    <ul id="myList"></ul>
+    <div id="spinner">
+    </div>
+
+</body>
+<script>
+    $(document).ready(function () {
+        var submit = $("body").find("#submit");
+        $textInTextField = $("body").find("#textInTextField");
+        submit.click(function () {
+            addSpinner();
+            var value = $textInTextField.val();
+            var ul = $("body").find("#myList");
+            setTimeout(() =>
+                $.ajax({
+                    method: 'GET',
+                    url: "http://numbersapi.com/" + value,
+                    success: function (data) {
+                        var li = $('<li></li>').text(data);
+                        ul.append(li);
+                        removeSpinner();
+
+                    }
+                }), 2000)
+        })
+    })
+    function addSpinner() {
+        var spinnerdiv = $("body").find("#spinner");
+        var spinner = $('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>')
+        spinnerdiv.append(spinner);
+
+    }
+    function removeSpinner() {
+        var spinnerdiv = $("body").find("#spinner");
+        $(spinner).html("");
+    }
+    function requestTheServer() {
+
+    }
+</script>
+
+</html>

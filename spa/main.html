@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <script src="angular.js"></script>
+    <script src="angular-route.js"></script>
+    <script src="app.js"></script>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div class="container" ng-app="spa_app">
+        <div ng-controller="homeController">
+
+            <div class="navbar-collapse collapse" id="bs-navbar">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="page-scroll" href="#/">Home</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#carrier">carrier</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <section ng-view>
+                </section>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

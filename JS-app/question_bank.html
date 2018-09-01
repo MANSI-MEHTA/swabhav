@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <title>Document</title>
+
+    <style>
+        button {
+            border: none;
+            background: lightgreen;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            margin: 4px 15px;
+
+        }
+    </style>
+
+</head>
+
+<body style="background-color:white">
+    <h1>
+        <center>Welcome To Quiz</center>
+    </h1>
+    <div id="startdiv">
+
+
+        <button id="start">Start your test</button>
+    </div>
+    <div id="displayquestionandoption"></div>
+
+    <div id="question_bank">
+        <canvas id="myCanvas" width="578" height="200">
+
+    </div>
+
+
+    <script>
+        var arrayOfQuestionObject = [];
+        var arrayOfQuestionsOnDisplay = [-1, -1, -1, -1, -1];
+        stored_answer = [-1, -1, -1, -1, -1];
+        var i = 0;
+        var ispreviousbuttonclicked = false;
+        $(document).ready(function () {
+            $.ajax({
+                method: 'GET',
+                url: "http://localhost/JS-app/questionbank.JSON",
+                dataType: 'json',
+
+                success: function (data) {
+                    var temp = JSON.parse(JSON.stringify(data));
+                    console.log(temp)
+                    arrayOfQuestionObject = temp.questionanswers.questionanswer;
+
+
+                }
+            });
+        });
+        var start = $("body").find("#start");
+        start.attr("onclick", "displayQuestion()")
+
+        function displayQuestion() {
+            if (i == 5) {
+                submitMyTest();
+            }
+            else {
+                var startdiv = $("body").find("#startdiv");
+                var div1 = $("<div></div>");
+
+                startdiv.html("");
+                var div = $("body").find("#displayquestionandoption");
+                div.html("");
+                var ul = $('<ul></ul>')
+                div.append(ul);
+                if (ispreviousbuttonclicked) {
+                    var randomQuestion = arrayOfQuestionsOnDisplay[i];
+                    ispreviousbuttonclicked = !(ispreviousbuttonclicked);
+                }
+                else if (arrayOfQuestionsOnDisplay[i] == -1) {
+                    var randomQuestion = generateRandomQuestion(i);
+                    arrayOfQuestionsOnDisplay[i] = randomQuestion;
+                }
+                else {
+                    var randomQuestion = arrayOfQuestionsOnDisplay[i];
+
+                }
+                var li = $("<li>" + i + 1 + "</li>");
+                ul.append(li);
+                li.text(arrayOfQuestionObject[randomQuestion].question);
+                li.append(div1);
+                displayOptions(randomQuestion, div1);
+                console.log(randomQuestion);
+                displayButtons();
+            }
+        }
+        function displayOptions(randomQuestion, div1) {
+            arrayOfQuestionObject[randomQuestion].option.forEach(element => {
+                var span = $('<span></span>')
+                var input = $('<input></input>');
+                input.attr('type', "radio");
+                input.attr("name", "randomQuestion");
+                input.attr("id", i);
+                input.attr("value", element);
+                input.attr("onclick", "storeAnswer(this)");
+
+                div1.append(input);
+                div1.append(span)
+                span.text(element)
+                div1.append('<br>')
+
+            });
+        }
+        function displayButtons() {
+            var div = $("body").find("#displayquestionandoption");
+            var submitbutton = $('<button></button>');
+            submitbutton.attr("onclick", "submitMyTest()");
+            submitbutton.text("submit");
+            submitbutton.attr("id", "submit");
+            var nextbutton = $('<button></button>');
+            nextbutton.attr("onclick", "fornextButton()");
+            nextbutton.text("next");
+            nextbutton.attr("id", "next");
+            if (i !== 0) {
+                var previousbutton = $('<button></button>');
+                previousbutton.attr("onclick", "setPreviousButtonflagTrue()");
+                previousbutton.text("previous");
+                previousbutton.attr("id", "previous");
+                div.append(previousbutton);
+
+            }
+            div.append(nextbutton);
+            div.append(submitbutton);
+
+        }
+        function setPreviousButtonflagTrue() {
+            ispreviousbuttonclicked = !(ispreviousbuttonclicked);
+            i--;
+            displayQuestion();
+        }
+        function fornextButton() {
+            i++;
+            displayQuestion();
+        }
+        function generateRandomQuestion(i) {
+            var random = Math.floor(Math.random() * arrayOfQuestionObject.length);
+            for (var j = 0; j <= i; j++) {
+                if (arrayOfQuestionsOnDisplay[j] == random) {
+                    random = generateRandomQuestion(i);
+                }
+            }
+            return random;
+
+        }
+        function storeAnswer(event) {
+            var id = $(event).attr("id");
+            stored_answer[id] = $(event).val();
+
+        }
+
+        function submitMyTest() {
+            var piechartdiv = $("body").find("#question_bank");
+            var div = $("body").find("#displayquestionandoption");
+            div.html("");
+
+            var p = $("<p></p>");
+            var correctAnswer = 0;
+            for (var j = 0; j < i; j++) {
+                var index = arrayOfQuestionsOnDisplay[j];
+
+                if (stored_answer[j] == arrayOfQuestionObject[index].ans) {
+                    correctAnswer++;
+                }
+
+
+            }
+            console.log("correct answers are:" + correctAnswer);
+            piechartdiv.append(p);
+            var percentage = calculatePercentage(correctAnswer)
+            p.text("Your Score is :" + percentage + "%");
+            drawPieChart(percentage)
+
+
+        }
+        function calculatePercentage(correctAnswer) {
+            return (100 * correctAnswer) / 5;
+        }
+        function drawPieChart(percentage) {
+            var canvas = document.getElementById("myCanvas");
+            var context = canvas.getContext("2d");
+            var centerX = canvas.width / 2;
+            var centerY = canvas.height / 2;
+            var radius = 70;
+            var pass = (percentage / 100).toFixed(2);
+            if (pass !== 0) {
+                context.beginPath();
+                context.fillStyle = "green";
+                context.moveTo(centerX, centerY);
+                context.arc(centerX, centerY, radius, 0, pass * 2 * Math.PI)
+                context.lineTo(centerX, centerY);
+                context.stroke();
+                context.fill();
+                context.closePath();
+
+
+                context.beginPath();
+                context.fillStyle = "red";
+                context.moveTo(centerX, centerY);
+                context.arc(centerX, centerY, radius, pass * 2 * Math.PI, 2 * Math.PI)
+                context.lineTo(centerX, centerY);
+                context.stroke();
+                context.fill();
+                context.closePath();
+
+
+            }
+            else {
+                context.beginPath();
+                context.arc(centerX, centerY, radius, 0, 360, false)
+                context.closePath();
+                context.fillStyle = "red";
+                context.fill();
+            }
+
+
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>

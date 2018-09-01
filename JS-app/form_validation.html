@@ -1,0 +1,33 @@
+<html>
+    <body>
+        <div>
+            <form  onsubmit="return validation()">
+               <label>Name:</label><input type="text" id="name" placeholder="full name" ><br><br>
+               <label>Mobile number:</label><input type="number" id="number" placeholder="Enter mobile number" ><br>
+               <label>Email-id:</label><input type="email" id="email" placeholder="Enter email id"><br>
+               <label>Postal code:</label><input type="number" id="pincode" placeholder="Enter pin code"><br>
+               <input type="submit" id="submit" value="submit">
+            </form>
+        </div>
+    </body>
+    <script>
+        function validation(){
+            var name=document.getElementById("name").value;
+            var number=document.getElementById("number").value
+            var pincode=document.getElementById("pincode").value
+            if(name==""){
+                alert("please fill first name");
+                return false;
+
+            }
+            if(number.length>10){
+                alert("please enter valid mobile number");
+                return false;
+            }
+            if(pincode.length>6){
+                alert("please enter valid postal code");
+                return false;
+            }
+        }
+        </script>
+    </html>

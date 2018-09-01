@@ -1,0 +1,53 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+    <div ng-app="info_app">
+
+
+        <section ng-controller="myController">
+            <button ng-init="display=false" ng-click="display=!display">click me!</button>
+            <div ng-if="display" ng-repeat="value in PersonInformation.Info">
+                <p>id: {{value.id}}</p>
+                <p>First Name: {{value.firstName}}</p>
+                <p>Last Name: {{value.lastName}}</p>
+                <img ng-src={{value.photo}} height="100" width="100">
+            </div>
+
+        </section>
+        <section ng-controller="controller2">
+            <p>Name is: {{employee.name}}</p>
+            <p>Company name is: {{employee.company}}</p>
+        </section>
+    </div>
+    <script>
+        angular.module('info_app', ['employee_info']).controller('myController', function ($scope) {
+            $scope.PersonInformation = {
+                Info: [{
+                    id: 101,
+                    firstName: "varshil",
+                    lastName: "mehta",
+                    photo: "image.jpg"
+
+                }]
+
+
+
+            }
+        })
+        angular.module('employee_info', []).controller('controller2', function ($scope, $timeout) {
+            $scope.employee = {
+                name: "varshil",
+                company: "aurion"
+            }
+            $timeout(function () {
+                $scope.employee ={
+                    name:"manoj",
+                    company:"hitech"
+                } 
+            }, 4000);
+        })
+    </script>
+</body>
+
+</html>

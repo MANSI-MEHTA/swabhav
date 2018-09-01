@@ -1,0 +1,8 @@
+package com.techlabs;
+
+import com.mysql.jdbc.Statement;
+
+public class TestStatement {
+private Statement stmt=null;
+
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="txtbox" value="">
+    <ul id="myList"></ul>
+</body>
+<script>
+    $(document).ready(function () {
+        var names = JSON.parse(localStorage.getItem("text"));
+        displayFromLocalStorage();
+        $list = $("body").find("#myList")
+        $id = $("body").find("#txtbox")
+
+        $id.keypress(function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                var value = $id.val();
+                console.log(value)
+                var li = $('<li></li>').text(value);
+                var cross = $('<span><button style="background-color:red">X</button></span>')
+                li.append(cross)
+                cross.attr("onclick", "removeRow(this)")
+
+                $list.append(li);
+                names.push({
+                    lineText: value,
+                    flag: true,
+                    exist: true
+                });
+                li.attr("onclick", "strikeName(this)")
+                storeInToLocalStorage(names);
+
+
+
+
+            }
+        })
+    })
+    function removeRow(cross) {
+        var names = JSON.parse(localStorage.getItem("text"));
+        var value1 = $(cross).parent().text();
+        $.each(names, function (index, object) {
+            if (object.lineText + "X" === value1) {
+                console.log("striking")
+                object.exist = !(object.exist);
+            }
+        })
+        $(cross).parent().remove();
+        storeInToLocalStorage(names);
+
+
+    }
+    function strikeName(li) {
+        var names = JSON.parse(localStorage.getItem("text"));
+        var value1 = $(li).text();
+        $.each(names, function (index, object) {
+            if (object.lineText + "X" === value1) {
+                object.flag = !(object.flag);
+            }
+        })
+        $(li).css("text-decoration", " line-through")
+        storeInToLocalStorage(names);
+
+    }
+
+    function displayFromLocalStorage() {
+        if (localStorage.getItem("text")) {
+            var names = JSON.parse(localStorage.getItem("text"));
+            $.each(names, function (index, object) {
+                displayFromLocalStorageIfTaskNotDeleted(object)
+            })
+        }
+
+    }
+    function displayFromLocalStorageIfTaskNotDeleted(object) {
+        if (object.exist) {
+            displayFromLocalStorageTaskStatus(object)
+        }
+
+    }
+    function displayFromLocalStorageTaskStatus(object) {
+        $list = $("body").find("#myList")
+        
+        if (object.flag) {
+            console.log(object.flag)
+            var li = $('<li></li>').text(object.lineText);
+            var cross = $('<span><button style="background-color:red">X</button></span>')
+            li.append(cross)
+            cross.attr("onclick", "removeRow(this)")
+            $list.append(li);
+            li.attr("onclick", "strikeName(this)");
+        }
+        else {
+            var li = $('<li></li>').text(object.lineText);
+            var cross = $('<span><button style="background-color:red">X</button></span>')
+            li.append(cross)
+            cross.attr("onclick", "removeRow(this)")
+            $(li).css("text-decoration", " line-through")
+            $list.append(li);
+
+        }
+    }
+    function storeInToLocalStorage(names){
+        localStorage.setItem("text", JSON.stringify(names));
+    
+    }
+</script>
+
+
+</html>

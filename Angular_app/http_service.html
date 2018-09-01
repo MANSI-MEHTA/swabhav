@@ -1,0 +1,43 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+
+    <div ng-app="http.mod">
+        <section ng-controller="httpCtrl">
+            <p>Today's welcome message is:</p>
+            <h1>{{message}}</h1>
+        </section>
+    </div>
+</body>
+<script>
+    angular.module('http.mod', []).factory('dataService', function ($log, $q, $http) {
+
+        const object = {};
+        object.getNumberFact = ((number) => {
+            return $q((resolve, reject) => {
+                $http.get("http://numbersapi.com/" + number).then(function (response) {
+                    if (response.status !== 404) {
+                        resolve(response.data)
+                    } else {
+                        reject("error")
+                    }
+
+                }).catch((error) => {
+                    console.log(error)
+                })
+            })
+        })
+        return object;
+
+    }).controller('httpCtrl', function ($scope, dataService, $log) {
+        console.log(dataService.getNumberFact(5))
+        dataService.getNumberFact(5).then((response) => {
+            $scope.message = response;
+        }).catch((error) => {
+            $log.log(error);
+        })
+    })
+</script>
+
+</html>

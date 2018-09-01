@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+
+    <div ng-app="http.mod">
+        <section ng-controller="httpCtrl">
+            <p>Today's welcome message is:</p>
+            <h1>{{message}}</h1>
+            <hr>
+            <p>the url of page is</p>
+            <h1>{{url}}</h1>
+            <hr>
+            <p>The time is:</p>
+            <h1>{{theTime}}</h1>
+        </section>
+    </div>
+
+
+    <script>
+        angular.module('http.mod', []).controller('httpCtrl', function ($scope, $http, $location, $interval) {
+            $http.get("http://numbersapi.com/5").then(function (success) {
+                $scope.message = success.data;
+
+            })
+            $scope.url = $location.absUrl();
+            $scope.theTime = new Date().toLocaleTimeString();
+            $interval(function () {
+                $scope.theTime = new Date().toLocaleTimeString();
+            }, 1000);
+        });
+    </script>
+
+</body>
+
+</html>

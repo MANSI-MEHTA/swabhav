@@ -1,0 +1,13 @@
+package com.techlabs;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
+
+public class TestStatement {
+	private Statement stmt = null;
+	private Connection conn;
+
+	public TestStatement(Connection conn) {
+		this.conn = conn;
+	}
+}

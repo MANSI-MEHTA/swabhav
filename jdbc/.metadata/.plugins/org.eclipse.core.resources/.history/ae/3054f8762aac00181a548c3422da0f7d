@@ -1,0 +1,39 @@
+package com.techlabs;
+
+import java.sql.*;
+
+public class TestConnection {
+	Statement stmt = null;
+	ResultSet rs = null;
+	DatabaseMetaData md = null;
+	
+	public static void main(String args[]) throws SQLException {
+		Connection conn = getConnection();
+		
+	}
+	public static void displayAllTables(Connection conn){
+		System.out.println("DataBase Name is:" + conn.getCatalog());
+
+		md = conn.getMetaData();
+		rs = md.getTables(null, null, "%", null);
+		while (rs.next()) {
+			System.out.println(rs.getString(3));
+		}
+
+	}
+	public static Connection getConnection() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Connection conn = DriverManager
+					.getConnection("jdbc:mysql://localhost/swabhav?"
+							+ "user=root&password=root");
+			System.out.println("connection is successfull");
+
+			return conn;
+		} catch (Exception ex) {
+			System.out.println(ex);
+			return null;
+		}
+	}
+
+}

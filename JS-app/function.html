@@ -1,0 +1,54 @@
+<script>
+    
+    function init() {
+        for (count = 0; count <= 10; count++) {
+            console.log(count);
+
+        }
+        console.log("end of function" + count);
+    }
+console.log(typeof count)
+init();
+    console.log("end of script" + count);
+    var f1 = function () {
+        console.log("inside f1");
+    }
+    f1();
+    var f2 = function () {
+        console.log("inside f2");
+    }();
+    function downloading(url, callback) {
+        console.log("downloading from " + url);
+        var random = Math.floor(Math.random() * 10);
+        if (random > 5) {
+            callback("greater than 5")
+        }
+        else {
+            callback("less than 5")
+        }
+    }
+    downloading("http://swabtechlabs", function (message) {
+        console.log(message);
+
+    });
+    setTimeout(function () {
+        console.log("it is inside setTimeOut")
+    }, 2000);
+    downloading("https://aurionpro", (status) => console.log(status));
+    setTimeout(() => {
+        console.log("it is inside arrow function ")
+    }, 4000)
+    var names = ["varshil", "manoj"]
+    var updated=[];
+   names.map((x) => {
+       console.log( x);
+    });
+
+   names.map((x) => {
+       updated.push(x.toUpperCase())
+    });
+    updated.map((x) => {
+       console.log(x);
+    });
+
+</script>

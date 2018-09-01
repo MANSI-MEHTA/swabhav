@@ -1,0 +1,79 @@
+<html>
+
+<body>
+
+</body>
+<script>
+    var module = (function () {
+        var privateVariable = "some value",
+            privateMethod = function () {
+                console.log("we are inside private fumction")
+            };
+        return {
+
+            privilegedMethod: function () {
+                console.log("value of private variable of parent function is : " + privateVariable);
+                privateMethod();
+            }
+        };
+    })();
+    module.privilegedMethod();
+</script>
+<script>
+    function makeCustomer() {
+        var _name;
+        var object = {}
+        object.setName = function (name) {
+            if (name.length > 5)
+                _name = name;
+            else {
+                throw "not valid";
+            }
+        }
+        object.getName = function () {
+            return _name;
+        }
+        return object;
+    }
+
+    var c1 = makeCustomer();
+    c1.setName("varshil");
+    console.log(c1.getName())
+    console.log(c1);
+
+</script>
+<script>
+    var swabhav = (function () {
+
+        function makeStudent() {
+            var _name;
+            var object = {}
+            object.setName = function (name) {
+                if (name.length > 5)
+                    _name = name;
+                else {
+                    throw "not valid";
+                }
+            }
+            object.getName = function () {
+                return _name;
+            }
+            return object;
+
+
+        }
+        return {
+            makeStudent:makeStudent
+        }
+
+    })();
+    var student1 = swabhav.makeStudent();
+    student1.setName("varshil");
+    console.log(student1.getName())
+    console.log(student1);
+
+
+</script>
+
+
+</html>

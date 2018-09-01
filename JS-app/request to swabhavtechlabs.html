@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1 id="response"></h1>
+    <button id="button" onclick="fetchData()">click</button>
+
+    <script>
+        function fetchData() {
+            var URL = "https://cors-anywhere.herokuapp.com/http://swabhavtechlabs.com";
+            var xhr = new XMLHttpRequest();
+            var frame = document.createElement("IFRAME");
+            frame.setAttribute("src", "http://swabhavtechlabs.com");
+            frame.setAttribute("width", "500px");
+            frame.setAttribute("height", "500px");
+
+            document.body.appendChild(frame);
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 2 && xhr.status == 200) {
+                    document.getElementById("button").disabled = true;
+                }
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log(xhr.responseText)
+                    document.getElementById("button").disabled = false;
+                }
+
+            }
+            xhr.open('GET', URL)
+            xhr.send()
+        }
+
+    </script>
+</body>
+
+</html>

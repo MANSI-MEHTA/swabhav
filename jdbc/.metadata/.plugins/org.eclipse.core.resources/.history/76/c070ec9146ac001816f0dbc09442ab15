@@ -1,0 +1,21 @@
+package com.techlabs;
+
+import java.sql.*;
+
+public class TestPreventSqlInjection {
+	private Connection conn;
+
+	public TestPreventSqlInjection(Connection conn) {
+		super();
+		this.conn = conn;
+	}
+
+	public void getStudentById(int rollno) {
+		PreparedStatement stmt = conn
+				.prepareStatement("Select * from student where rollno=? AND 2>0");
+		stmt.setString(1, rollno);
+
+		ResultSet rs = stmt.executeQuery();
+
+	}
+}

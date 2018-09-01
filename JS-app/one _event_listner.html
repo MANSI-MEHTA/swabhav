@@ -1,0 +1,23 @@
+<html>
+    <body id="body">
+        <button id="red">Red</button>
+        <button id="blue">blue</button>
+        
+        <script>
+            var red=document.getElementById("red");
+            var blue=document.getElementById("blue");
+            var body=document.getElementById("body");
+            
+            red.addEventListener("click",changeDisplay)
+            blue.addEventListener("click",changeDisplay)
+            function changeDisplay(event){
+                if(event.target.id=="red"){
+                    document.body.style.background="red";
+                }
+                else{
+                    document.body.style.background="blue";
+                }
+            }
+        </script>
+    </body>
+</html>

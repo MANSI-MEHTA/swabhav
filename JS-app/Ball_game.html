@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <style>
+            button {
+            border: none;
+            border-radius: 50%;
+            color: grey;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 15px;
+                    
+}
+
+            </style>
+        </head>
+    <body>
+        <div id="board"></div>
+        <script>
+            (function(){
+            var array=[];
+            var random=generateRandomNumber();
+            var div=document.getElementById("board");
+            var chance=1;
+            for(var i=0;i<=48;i++){
+                var button=document.createElement("button");
+                button.innerHTML=i;
+                button.setAttribute("id",i);
+                pushcolorInToArray(i);
+                button.addEventListener("click",checkStatus);
+                div.appendChild(button);
+
+            }
+            function pushcolorInToArray(i){
+                if(i>random){
+                    array.push({
+                    color:2
+                    });
+                }
+                else if(i<random){
+                    array.push({
+                    color:0
+                    });
+                }
+                else{
+                    array.push({
+                    color:1
+                    });
+                
+                }
+            }
+            function generateRandomNumber(){
+                var random=Math.floor(Math.random() * 48);
+                console.log(random);
+                return random;
+                   
+
+            }
+            function checkStatus(){
+                if(chance<=5){
+                    var value=this.getAttribute("id");
+                    if(array[value].color==1){
+                        this.style.background="blue";
+                        alert("you won the game");
+                    }else if(array[value].color==0)
+                        this.style.background="red";
+                    else
+                        this.style.background="green";
+                    chance++;
+                    
+                }   
+                else
+                    alert("the game is over");
+
+
+                
+            }
+            }());
+             </script>
+    </body>
+</html>

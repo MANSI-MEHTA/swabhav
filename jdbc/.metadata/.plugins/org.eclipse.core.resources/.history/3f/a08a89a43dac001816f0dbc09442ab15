@@ -1,0 +1,8 @@
+package com.techlabs;
+
+import java.sql.*;
+
+public class TestSqlInjection {
+	private Connection conn;
+
+}

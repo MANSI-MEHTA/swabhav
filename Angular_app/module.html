@@ -1,0 +1,62 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+    <div ng-app="swabhav.modA">
+        <section ng-controller="homeController">
+            <h1>we are inside home section</h1>
+            {{home.data}}
+        </section>
+        <section ng-controller="studentController">
+            <h1>we are inside student section</h1>
+
+            <div ng-repeat="value in students.student">
+                <p>id:{{value.id}}</p>
+                <p>ame:{{value.name}}</p>
+            </div>
+        </section>
+        <section ng-controller="facultyController">
+            <h1>we are inside faculty section</h1>
+
+        </section>
+    </div>
+
+    <script>
+        angular.module('swabhav.modA', ['swabhav.modB', 'swabhav.modC']).controller('homeController', function ($scope, $rootScope) {
+            console.log("inside home controller");
+            $scope.home = {
+                data: "data from home controller and inside $scope"
+            }
+            $rootScope.company = { data: "swabhav" }
+        })
+        var studentmodule = angular.module('swabhav.modB', []);
+        studentmodule.controller('studentController', function ($scope, $rootScope) {
+            console.log("inside student controler");
+            $scope.students = {
+                student:
+                    [{
+                        id: 1,
+                        name: "varshil"
+                    },
+                    {
+                        id: 2,
+                        name: "manoj"
+                    },
+                    {
+                        id: 3,
+                        name: "xyz"
+
+                    }
+
+                    ]
+            }
+        })
+        angular.module('swabhav.modC', []).controller('facultyController', function () {
+            console.log("inside faculty controler");
+
+        })
+
+    </script>
+</body>
+
+</html>

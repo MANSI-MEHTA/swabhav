@@ -1,0 +1,12 @@
+package com.techlabs;
+import java.sql.*;
+
+public class TestPreventSqlInjection {
+	private Connection conn;
+
+	public TestPreventSqlInjection(Connection conn) {
+		super();
+		this.conn = conn;
+	}
+	
+}

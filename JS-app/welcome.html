@@ -1,0 +1,86 @@
+
+<html>
+    <body>
+
+        <form>
+            <label>Name:</label>
+            <input type="text" placeholder="Enter your name"  id="name" required>
+        </form>
+        <button id="setNameOfText">submit</button>
+        <p id="demo"></p>
+        <script>
+            (function(){
+            var setNameOfText=document.getElementById("setNameOfText");
+            setNameOfText.addEventListener("click",setName);
+            window.onload=atLoad();
+            function atLoad(){
+                if(localStorage.getItem("com.techlabs.name")){
+                    displayFromLocalStorage();         
+                }
+            }
+        
+            var arrayOfName=getFromLocalStorage();
+            function setName(){
+                var date=getDateTime();
+                arrayOfName.push({
+                    name:document.getElementById("name").value,
+                    dateTime:date
+                });
+        
+                localStorage.setItem("com.techlabs.name",JSON.stringify(arrayOfName));
+                displayRecentStorage();
+            
+            }
+            function displayRecentStorage(){
+                var demo=document.getElementById("demo");
+                demo.innerHTML="Recent Data<br>";
+                displayFromLocalStorage();
+            }
+            function displayFromLocalStorage() {
+                var names=getFromLocalStorage();
+                
+                var demo=document.getElementById("demo");
+                demo.innerHTML="Data from local storage<br>";
+                var ul=document.createElement("ul");
+                demo.appendChild(ul);
+                names.forEach(element => {
+                    var li=document.createElement("li");
+                    ul.appendChild(li);
+                    var button=document.createElement("button");
+                    button.addEventListener("click",removeName);
+                    button.innerHTML="delete";
+                    button.setAttribute("id",element.dateTime);
+                    li.innerHTML=element.name+"  "+element.dateTime;
+                    button.style.marginLeft="25px";
+                    button.style.background="red";
+                   li.appendChild(button);
+                });
+             }
+            function getDateTime() {
+               var newdate=new Date();
+               return newdate;
+            }
+            function removeName(){
+                if(confirm("do you want to delete?")){
+                var names=getFromLocalStorage();
+                var updatedName=[];
+                var demo=document.getElementById("demo");
+                var remove=this.getAttribute("id");
+                names.forEach(element => {
+                    if(element.dateTime!==remove)
+                        updatedName.push(element);
+                })
+                localStorage.removeItem("com.techlabs.name");
+                localStorage.setItem("com.techlabs.name",JSON.stringify(updatedName));
+                displayFromLocalStorage();
+            }
+            }
+            
+            function getFromLocalStorage(){
+               var names= JSON.parse(localStorage.getItem("com.techlabs.name"));
+               return names;
+            }
+            }());
+        </script>
+    </body>   
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <title>Document</title>
+    <style>
+        button {
+            border: none;
+            border-radius: 50%;
+            color: grey;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 15px;
+            padding: 21px 21px;
+
+        }
+
+        .forfirst9balls {
+            border: none;
+            border-radius: 50%;
+            color: grey;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 15px;
+            padding: 24px 24px;
+            padding-bottom:18px; 
+            padding-top:18px; 
+            
+
+        }
+    </style>
+</head>
+
+<body style="background-color: gray">
+    <div>
+        <h2>
+            <center>Welcome to blue ball game</center>
+        </h2>
+        <p>
+            <strong>Tips:</strong>
+            <span style="text-emphasis-color: red">Find Blue ball in less than 5 chance</span>
+        </p>
+    </div>
+    <div>
+        <center id="board"></center>
+    </div>
+    <script>
+        var array = [];
+        var random = generateRandomNumber();
+        var div = $("body").find("#board");
+        var chance = 1;
+        var numberofball=29;
+        $(document).ready(function () {
+            for (var i = 0; i <= 29; i++) {
+                if (i < 10) {
+                    var button = $('<button></button>');
+                    button.attr("class", "forfirst9balls")
+                }
+                else {
+                    var button = $('<button></button>');
+                }
+                button.text(i);
+                button.attr("id", i);
+                pushcolorInToArray(i);
+                button.attr("onclick", "checkStatus(this)");
+                if (i % 5 == 0) {
+                    div.append($('<br>'))
+                }
+                div.append(button);
+
+            }
+        });
+        function pushcolorInToArray(i) {
+            if (i > random) {
+                array.push({
+                    color: 2
+                });
+            }
+            else if (i < random) {
+                array.push({
+                    color: 0
+                });
+            }
+            else {
+                array.push({
+                    color: 1
+                });
+
+            }
+        }
+        function generateRandomNumber() {
+            var random = Math.floor(Math.random() *29);
+            console.log(random);
+            return random;
+
+
+        }
+        function checkStatus(button) {
+            if (chance <= 5) {
+                var value = $(button).attr("id");
+                if (array[value].color == 1) {
+                    $(button).css("background", "blue");
+                    alert("you won the game");
+                } else if (array[value].color == 0)
+                    $(button).css("background", "red");
+                else
+                    $(button).css("background", "green");
+                chance++;
+
+            }
+            else
+                alert("the game is over");
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>

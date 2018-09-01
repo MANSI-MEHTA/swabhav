@@ -1,0 +1,25 @@
+package com.techlabs;
+
+import java.sql.*;
+
+public class TestPreventSqlInjection {
+	private Connection conn;
+
+	public TestPreventSqlInjection(Connection conn) {
+		super();
+		this.conn = conn;
+	}
+
+	public void getStudentById(int rollno) {
+		try{
+		PreparedStatement stmt = conn
+				.prepareStatement("Select * from student where rollno=?");
+		stmt.setInt(1, rollno);
+		
+
+		ResultSet rs = stmt.executeQuery();
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
+		}
+	}
+}

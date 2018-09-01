@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div>
+            <input type="range" min="1" max="100" id="myRange">
+            <div id="display"></div>
+            
+        </div>
+        <script>
+            (function(){
+            var range=document.getElementById("myRange");
+            var div=document.getElementById("display");
+            range.addEventListener("click",buttonGeneartion)
+            var values=0;
+            function buttonGeneartion(){
+                if(values>0){
+                    div.innerHTML="";
+                }
+                console.log(this.value);
+                values=this.value;
+                for(var i=1;i<=values;i++){
+                    var button=document.createElement("button");
+                    button.innerHTML="click me";
+                    button.setAttribute("id",i);
+                    button.addEventListener("click",display);
+                    button.style.marginLeft="25px";
+                    button.style.background="red";
+                    div.appendChild(button);
+
+                }
+            } 
+                function display(){
+                    var div=document.getElementById("display");
+                    var p=document.createElement("p");
+                    div.appendChild(p);
+                    
+                    var value=this.getAttribute("id");
+                    console.log(value);
+                    p.innerHTML="you Clicked on  button "+value;
+
+                }
+            }());
+            
+         </script>
+    </body>
+    </html>

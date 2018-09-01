@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <button onclick="playvideo()">play video</button>
+        <button onclick="pausevideo()">pause video</button>
+        <video id="video" width="320" height="176">
+            <source src="raees.mp4" type="video/mp4">
+        </video>
+        <script>
+            var video=document.getElementById("video");
+            function playvideo(){
+                video.play();
+            }
+            function pausevideo(){
+                video.pause();
+            }
+            </script>
+        </body>
+    </html>

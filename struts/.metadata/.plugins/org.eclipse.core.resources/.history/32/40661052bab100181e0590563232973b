@@ -1,0 +1,19 @@
+package com.techlabs.viewmodel;
+
+public class ShowCollegeVM {
+	private String clg_id;
+	private String clg_name;
+	private String location;
+
+	public ShowCollegeVM() {
+
+	}
+
+	public ShowCollegeVM(String clg_id, String clg_name, String location) {
+		super();
+		this.clg_id = clg_id;
+		this.clg_name = clg_name;
+		this.location = location;
+	}
+
+}

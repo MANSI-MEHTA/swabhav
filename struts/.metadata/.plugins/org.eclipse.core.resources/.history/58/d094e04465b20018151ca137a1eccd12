@@ -1,0 +1,79 @@
+package com.techlabs.actions;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+
+public class Form extends ActionSupport implements
+		ModelDriven<ValidationAction> {
+	ValidationAction beam = new ValidationAction();
+	private String field1 = "str";
+	private int[] ints = { 10, 20 };
+	private Map map = new HashMap();
+	private String customName = "custom";
+
+	@Override
+	public String execute() throws Exception {
+		System.out.print("working");
+		 map.put("John", "Galt");
+		return "success";
+	}
+
+	public ValidationAction getBeam() {
+		return beam;
+	}
+
+	public void setBeam(ValidationAction beam) {
+		this.beam = beam;
+	}
+
+	public String getField1() {
+		return field1;
+	}
+
+	public void setField1(String field1) {
+		this.field1 = field1;
+	}
+
+	public int[] getInts() {
+		return ints;
+	}
+
+	public void setInts(int[] ints) {
+		this.ints = ints;
+	}
+
+	public Map getMap() {
+		return map;
+	}
+
+	public void setMap(Map map) {
+		this.map = map;
+	}
+
+	public String getCustomName() {
+		return customName;
+	}
+
+	public void setCustomName(String customName) {
+		this.customName = customName;
+	}
+
+	public void validate() {
+		if (beam.getFname().length() < 3) {
+			addFieldError("fname", "First Name is mandatory");
+		}
+		if (beam.getLname().length() < 3) {
+			addFieldError("lname", "Last Name is mandatory");
+		}
+	}
+
+	@Override
+	public ValidationAction getModel() {
+
+		return beam;
+	}
+
+}

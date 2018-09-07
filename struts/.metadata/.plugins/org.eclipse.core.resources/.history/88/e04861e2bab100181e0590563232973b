@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<a href="/student-app/showstudent">Display Students</a>
+<a href="/student-app/showcollege">Display Colleges</a>
+
+</body>
+</html>

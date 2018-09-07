@@ -1,0 +1,35 @@
+package com.techlabs.actions;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+
+public class Form extends ActionSupport implements
+		ModelDriven<ValidationAction> {
+	ValidationAction beam = new ValidationAction();
+	private String field1 = "str";
+	private int[] ints = { 10, 20 };
+	private Map map = new HashMap();
+	private String customName = "custom";
+
+	@Override
+	public String execute() throws Exception {
+		System.out.print("working");
+		return "success";
+	}
+
+	public void validate() {
+		if (beam.getFname().length() < 3) {
+			addFieldError("fname", "First Name is mandatory");
+		}
+		if (beam.getLname().length() < 3) {
+			addFieldError("lname", "Last Name is mandatory");
+		}
+	}
+
+	@Override
+	public ValidationAction getModel() {
+
+		return beam;
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.techlabs.actions;
+
+import java.util.Date;
+
+import com.opensymphony.xwork2.Action;
+
+public class BrowseAction implements Action{
+private Date date=null;
+	@Override
+	public String execute() throws Exception {
+		
+		return "success";
+	}
+
+}

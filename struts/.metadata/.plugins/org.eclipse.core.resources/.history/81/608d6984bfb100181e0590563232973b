@@ -1,0 +1,10 @@
+package com.techlabs.services;
+
+public class CollegeService {
+	private CollegeService object;
+
+	private CollegeService() {
+
+	}
+
+}

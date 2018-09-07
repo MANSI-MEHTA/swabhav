@@ -1,0 +1,21 @@
+package com.techlabs.payment;
+
+import java.util.Scanner;
+import java.sql.*;
+
+import com.techlabs.utility.CreateConnection;
+import com.techlabs.utility.Transaction;
+
+public class CustomerPayment {
+	public static void main(String args[]) throws Exception {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter amount to transfer");
+		int amount=sc.nextInt();
+		CreateConnection connectonInstance=CreateConnection.getInstanceOf();
+		Connection conn=connectonInstance.getConnection();
+		
+		Transaction transaction=new Transaction(conn);
+		transaction.paymentGateway(amount);
+		
+	}
+}

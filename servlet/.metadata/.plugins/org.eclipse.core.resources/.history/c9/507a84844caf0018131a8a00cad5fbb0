@@ -1,0 +1,21 @@
+package com.techlabs.utility;
+
+import java.sql.*;
+
+public class GetDate {
+	private Connection conn;
+
+	public GetDate(Connection conn) {
+		this.conn=conn;
+	}
+	public String swabhav_getDate(){
+		String date=null;
+		try{
+		PreparedStatement stmt=conn.prepareStatement("SELECT getDate()");
+	stmt.execute();
+	
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
+		}
+	}
+}

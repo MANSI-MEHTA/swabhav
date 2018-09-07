@@ -1,0 +1,10 @@
+package com.techlabs.actions;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class ValidationAction extends ActionSupport {
+	private String fname;
+	private String lname;
+	private int rollno;
+	public void 
+}

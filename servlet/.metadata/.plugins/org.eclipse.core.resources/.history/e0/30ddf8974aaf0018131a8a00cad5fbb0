@@ -1,0 +1,6 @@
+package com.techlabs.utility;
+import java.sql.*;
+public class GETDATE {
+private Connection conn;
+public GETDate
+}

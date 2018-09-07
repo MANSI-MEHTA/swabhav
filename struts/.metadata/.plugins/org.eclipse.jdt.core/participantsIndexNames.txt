@@ -1,0 +1,13 @@
+INDEX VERSION 1.127
+C:\swabhav\struts\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3025982258.index
+\welcome-struts\src\main\java
+C:\swabhav\struts\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2497537337.index
+\form-validation-strut-app\src\main\java
+C:\swabhav\struts\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\669344435.index
+\student-app\src\main\java
+C:\swabhav\struts\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3951508384.index
+\welcome-struts\src\main\java
+C:\swabhav\struts\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1620834654.index
+\student-college-app\src\main\java
+C:\swabhav\struts\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3644278604.index
+\welcome-struts\src\main\java

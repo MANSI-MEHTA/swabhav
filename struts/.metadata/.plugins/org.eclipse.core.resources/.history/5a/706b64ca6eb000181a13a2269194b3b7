@@ -1,0 +1,49 @@
+package com.techlabs.actions;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class ValidationAction extends ActionSupport {
+	private String fname;
+	private String lname;
+	private String password;
+	private int rollno;
+
+	public void validate() {
+		if (fname.length() < 3) {
+			addFieldError("fname", "First Name is mandatory");
+		}
+		if (lname.length() < 3) {
+			addFieldError("lname", "Last Name is mandatory");
+		}
+		if (String.valueOf(rollno)==null) {
+			addFieldError("rollno", "Rollno is mandatory");
+		}
+	}
+	public String execute(){
+		return "success";
+	}
+	public String getFname() {
+		return fname;
+	}
+
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+
+	public String getLname() {
+		return lname;
+	}
+
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+
+	public int getRollno() {
+		return rollno;
+	}
+
+	public void setRollno(int rollno) {
+		this.rollno = rollno;
+	}
+	
+}

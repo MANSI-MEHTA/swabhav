@@ -1,0 +1,24 @@
+package com.techlabs.actions;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import com.opensymphony.xwork2.Action;
+
+public class BrowseAction implements Action {
+	private Date date;
+
+	public String getDate() {
+		System.out.print("working");
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
+		date =new Date();
+		return formatter.format(date);
+	}
+
+	@Override
+	public String execute() throws Exception {
+
+		return "success";
+	}
+
+}

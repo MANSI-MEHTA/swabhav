@@ -1,0 +1,5 @@
+package com.techlabs.actions;
+
+public class ShowCollegeAction {
+
+}

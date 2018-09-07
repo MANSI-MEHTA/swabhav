@@ -1,0 +1,11 @@
+package com.techlabs.utility;
+
+import java.sql.*;
+
+public class GetDate {
+	private Connection conn;
+
+	public GetDate(Connection conn) {
+		this.conn=conn;
+	}
+}

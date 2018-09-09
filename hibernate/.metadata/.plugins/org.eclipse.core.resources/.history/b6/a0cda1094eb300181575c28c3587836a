@@ -1,0 +1,22 @@
+package com.techlabs.entity.test;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.print.attribute.HashAttributeSet;
+
+import com.techlabs.entity.Customer;
+import com.techlabs.entity.Order;
+
+public class EntityTest {
+
+	public static void main(String args[]){
+		Customer cust=new Customer();
+		cust.setCust_id(101);
+		cust.setCust_name("varshil");
+		cust.setAddress("virar");
+		
+		Set<Order> orderset=new HashSet<Order>();
+		
+	}
+}

@@ -1,0 +1,30 @@
+package com.techlabs.entity.test;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
+import com.techlabs.entity.Customer;
+import com.techlabs.entity.Order;
+
+public class EntityTest {
+
+	public static void main(String args[]) {
+		Date date = new Date();
+		SimpleDateFormat convert = new SimpleDateFormat("dd/MM/YYYY HH:MM:SS ");
+
+		Customer cust = new Customer(UUID.randomUUID(), "varshil", "virar");
+
+		Set<Order> orderset = new HashSet<Order>();
+
+		Order order1 = new Order(Math.abs(UUID.randomUUID()
+				.getMostSignificantBits()), convert.format(date), cust);
+		Order order2 = new Order(Math.abs(UUID.randomUUID()
+				.getMostSignificantBits()), convert.format(date), cust);
+		orderset.add(order1);
+		orderset.add(order2);
+
+	}
+}

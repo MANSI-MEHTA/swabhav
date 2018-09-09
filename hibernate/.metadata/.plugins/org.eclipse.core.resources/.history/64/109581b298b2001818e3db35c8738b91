@@ -1,0 +1,54 @@
+package com.techlabs.entity.test;
+
+import java.util.Iterator;
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
+
+import com.techlabs.entity.Student;
+
+public class EntityTest {
+
+	public static void main(String[] args) {
+
+		Configuration config = new Configuration();
+		config.configure("hibernate-cfg.xml");
+		SessionFactory factory = config.buildSessionFactory();
+		System.out.println(factory.getClass());
+		try {
+			Session hbsession = factory.getCurrentSession();
+			hbsession.beginTransaction();
+			hbsession.save(new Student("varshil", "mehta"));
+			hbsession.save(new Student("manoj", "m"));
+			hbsession.save(new Student("shubham", "vora"));
+
+//			int id = 1;
+//			Student student = (Student) hbsession.get(Student.class, id);
+//			System.out.println("fname: " + student.getFname() + "\nlname:"
+//					+ student.getLname());
+
+			Criteria criteria = hbsession.createCriteria(Student.class);
+			List<Student> listOfStudents = criteria.list();
+
+			for (Student student1 : listOfStudents) {
+				System.out.println("fname: " + student1.getFname() + "\nlname:"
+						+ student1.getLname());
+
+			}
+
+			hbsession.getTransaction().commit();
+			hbsession.close();
+			factory.close();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+
+			factory.close();
+		}
+	}
+
+}

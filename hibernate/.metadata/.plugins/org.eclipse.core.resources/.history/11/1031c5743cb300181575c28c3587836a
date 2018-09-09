@@ -1,0 +1,26 @@
+package com.techlabs.entity.test;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import com.techlabs.entity.Department;
+import com.techlabs.entity.Employee;
+
+public class EntityTest {
+
+	public static void main(String args[]) {
+		
+		Department dept=new Department();
+		dept.setDept_name("computer");
+		
+		Set<Employee> empset=new HashSet<Employee>();
+		Configuration config=new Configuration();
+		config.configure("hibernate-cfg.xml");
+		SessionFactory factory=config.buildSessionFactory();
+		
+		
+	}
+}

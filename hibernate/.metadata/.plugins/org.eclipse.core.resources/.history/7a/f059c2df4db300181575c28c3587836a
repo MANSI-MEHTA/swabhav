@@ -1,0 +1,10 @@
+package com.techlabs.entity.test;
+
+import com.techlabs.entity.Customer;
+
+public class EntityTest {
+
+	public static void main(String args[]){
+		Customer cust=new Customer();
+	}
+}

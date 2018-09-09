@@ -1,0 +1,8 @@
+package com.techlabs.entity.test;
+
+public class EntityTest {
+
+	public static void main(String args[]){
+		
+	}
+}

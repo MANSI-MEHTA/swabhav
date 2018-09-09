@@ -1,0 +1,11 @@
+package com.techlabs.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Department {
+	private int dept_id;
+	private String dept_name;
+	private Set<Employee> empSet = new HashSet<Employee>();
+	
+}

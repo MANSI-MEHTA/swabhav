@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.SlashesInActionNames" value="">.
+	</constant>
+
+	<constant name="struts.mapper.action.prefix.enabled" value="true" />
+	<package name="main" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="authenticate"
+				class="com.techlabs.interceptor.AuthenticateInterceptor">
+			</interceptor>
+		</interceptors>
+		<action name="" class="">
+			<result name="success">/views/index.html</result>
+		</action>
+
+		<action name="addproduct" class="com.techlabs.action.AddProductAction"
+			method="execute">
+			<interceptor-ref name="authenticate"></interceptor-ref>
+			<result name="login" type="redirectAction">
+				<param name="actionName">login</param>
+			</result>
+			<result name="success">/views/AddProduct.jsp</result>
+		</action>
+
+		<action name="showcart" class="com.techlabs.action.AddProductAction"
+			method="executePost">
+			<result name="showcart" type="chain">addproduct
+			</result>
+		</action>
+
+		<action name="deletelineitem" class="com.techlabs.action.DeleteLineItemAction">
+			<result name="success" type="chain">addproduct</result>
+		</action>
+
+		<action name="login" class="com.techlabs.action.LoginAction"
+			method="execute">
+			<result name="input">/views/Login.jsp</result>
+		</action>
+		<action name="authentication" class="com.techlabs.action.LoginAction"
+			method="executePost">
+			<result name="success" type="redirectAction">
+				<param name="actionName">addproduct</param>
+			</result>
+			<result name="input">/views/Login.jsp</result>
+		</action>
+
+		<action name="registercustomer" class="com.techlabs.action.RegisterCustomerAction"
+			method="execute">
+
+			<result name="input">/views/RegisterCustomer.jsp</result>
+		</action>
+		<action name="signup" class="com.techlabs.action.RegisterCustomerAction"
+			method="executePost">
+			<result name="success" type="redirectAction">
+				<param name="actionName">addproduct</param>
+			</result>
+			<result name="input">/views/RegisterCustomer.jsp</result>
+		</action>
+
+	</package>
+</struts>

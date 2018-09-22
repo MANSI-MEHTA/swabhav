@@ -1,0 +1,58 @@
+package com.techlabs.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import com.techlabs.model.LineItem;
+import com.techlabs.model.Product;
+
+public class LineItemService {
+	private List<LineItem> listOfLineItems = new ArrayList<LineItem>();
+	private static LineItemService object;
+
+	private LineItemService() {
+
+	}
+
+	public static LineItemService getInstanceOf() {
+		if (object == null) {
+			object = new LineItemService();
+		}
+		return object;
+	}
+
+	public void addproductsincart(LineItem lineitem) {
+		listOfLineItems.add(lineitem);
+	}
+
+	public List<LineItem> getAllLineItem() {
+		return listOfLineItems;
+	}
+
+	public void deleteLineById(long id) {
+		for (LineItem lineitem : listOfLineItems) {
+			if (lineitem.getId() == id) {
+				listOfLineItems.remove(lineitem);
+			}
+		}
+	}
+public boolean checklineitemexist(){
+	for (Map<LineItem, Product> entry : listofproductsincart) {
+		System.out.println("coming outer inside for ");
+		for (LineItem lineitem : entry.keySet()) {
+			System.out.println("coming inner inside for ");
+			if (lineitem.getProduct_id() == productbeam.getId()) {
+				System.out.println("coming inside if ");
+				addActionMessage("You have already added to cart,instead update quantity");
+			}
+		}
+	}
+	
+}
+	public long generateLineItemId() {
+		return Math.abs(UUID.randomUUID().getMostSignificantBits());
+	}
+
+}

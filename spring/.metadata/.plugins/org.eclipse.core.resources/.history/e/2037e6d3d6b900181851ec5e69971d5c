@@ -1,0 +1,23 @@
+package com.techlabs.interceptor;
+
+import org.apache.struts2.dispatcher.SessionMap;
+
+import com.opensymphony.xwork2.ActionInvocation;
+import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
+
+public class AuthenticationInterceptor extends AbstractInterceptor {
+
+	
+	@Override
+	public String intercept(ActionInvocation invocation) throws Exception {
+		SessionMap<String, Object> sessionmap=(SessionMap<String, Object>)invocation.getInvocationContext().getSession();
+		if(sessionmap.get("username")==null){
+			return "login";
+		}
+		
+		return invocation.invoke();
+	}
+
+	
+
+}

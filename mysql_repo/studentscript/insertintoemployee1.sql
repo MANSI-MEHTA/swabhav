@@ -1,0 +1,1 @@
+Insert into employee(emp_id,emp_name,salary,department_id)values(2000,"abc",25000,1000);

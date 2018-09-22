@@ -1,0 +1,52 @@
+package com.techlabs.repo;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.techlabs.entity.Employee;
+
+@Repository
+public class EmployeeRepository {
+
+	@Autowired
+	private SessionFactory factory;
+
+	@SuppressWarnings("unchecked")
+	public List<Employee> getAllEmployees(){
+		return this.factory.openSession().createCriteria(Employee.class).list();
+	}
+	
+	@Transactional
+	public void addEmployee(Employee emp){
+		Session hbsession=this.factory.getCurrentSession();
+		try{
+		
+		hbsession.beginTransaction();
+		hbsession.save(emp);
+		hbsession.getTransaction().commit();
+		}catch(Exception ex){
+			hbsession.getTransaction().rollback();
+			System.out.println(ex.getMessage());
+		}finally{
+			hbsession.close();
+		}
+	}
+	
+	
+	public SessionFactory getFactory() {
+		return factory;
+	}
+
+	@Autowired
+	public void setFactory(SessionFactory factory) {
+		this.factory = factory;
+	}
+	
+	
+}

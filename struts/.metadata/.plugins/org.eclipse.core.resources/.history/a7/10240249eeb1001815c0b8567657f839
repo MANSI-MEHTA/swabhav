@@ -1,5 +1,0 @@
-package com.techlabs.interceptors;
-
-public class GetCollegeInterceptor {
-
-}

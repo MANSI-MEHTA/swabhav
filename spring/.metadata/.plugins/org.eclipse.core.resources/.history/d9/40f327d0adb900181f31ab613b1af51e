@@ -1,0 +1,55 @@
+package com.techlabs.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Employee")
+public class Employee {
+
+	@Id
+	@Column(name = "empo_id")
+	private long emp_id;
+	
+	@Column(name = "emp_name")
+	private String emp_name;
+	
+	@Column(name = "salary")
+	private double salary;
+
+	
+	public Employee(Long emp_id, String emp_name, double salary) {
+		super();
+		this.emp_id = emp_id;
+		this.emp_name = emp_name;
+		this.salary = salary;
+	}
+
+	public long getEmp_id() {
+		return emp_id;
+	}
+
+	public void setEmp_id(long emp_id) {
+		this.emp_id = emp_id;
+	}
+
+	public String getEmp_name() {
+		return emp_name;
+	}
+
+	public void setEmp_name(String emp_name) {
+		this.emp_name = emp_name;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+
+	
+}

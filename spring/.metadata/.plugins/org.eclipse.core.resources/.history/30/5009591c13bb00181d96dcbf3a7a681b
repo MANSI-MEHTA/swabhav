@@ -1,0 +1,34 @@
+package com.techlabs.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.techlabs.entity.Cart;
+import com.techlabs.entity.LineItem;
+import com.techlabs.repository.CartRepository;
+
+@Service
+public class CartService {
+
+	@Autowired
+	private CartRepository cart_repo;
+	private List<Cart> listOfLineItemsincart = new ArrayList<Cart>();
+	
+	public CartRepository getCart_repo() {
+		return cart_repo;
+	}
+
+	@Autowired
+	public void setCart_repo(CartRepository cart_repo) {
+		this.cart_repo = cart_repo;
+	}
+	public long generateLineItemId() {
+		return Math.abs(UUID.randomUUID().getMostSignificantBits());
+	}
+
+	
+}

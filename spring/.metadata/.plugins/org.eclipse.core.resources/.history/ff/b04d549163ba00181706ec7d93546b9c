@@ -1,0 +1,5 @@
+package com.techlabs.interceptor;
+
+public class AuthenticateInterceptor {
+
+}

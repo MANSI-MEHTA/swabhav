@@ -1,0 +1,15 @@
+package com.techlabs.viewmodel;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class RegistrationVM extends ActionSupport{
+
+	@Override
+	public String execute(){
+		return null;
+		
+	}
+	public String RegisterUser(){
+		return null;
+	}
+}

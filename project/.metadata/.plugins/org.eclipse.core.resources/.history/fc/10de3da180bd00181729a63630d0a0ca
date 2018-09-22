@@ -1,0 +1,33 @@
+package com.techlabs.repo;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.techlabs.entity.UserTransaction;
+
+@Repository
+public class UserTransactionRepo {
+
+	@Autowired
+	private SessionFactory factory;
+
+	public void printPassbook(UserTransaction transaction) {
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+		hbsession.save(transaction);
+		hbsession.getTransaction().commit();
+
+	}
+
+	public SessionFactory getFactory() {
+		return factory;
+	}
+
+	@Autowired
+	public void setFactory(SessionFactory factory) {
+		this.factory = factory;
+	}
+
+}

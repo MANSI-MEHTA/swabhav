@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;struts-spring-hibernate-app&apos; to &apos;Banking-app&apos;" description="Rename resource &apos;struts-spring-hibernate-app&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/struts-spring-hibernate-app" name="Banking-app" stamp="1537375485458" updateReferences="true"/>
+</session>

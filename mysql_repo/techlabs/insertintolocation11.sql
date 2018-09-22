@@ -1,0 +1,1 @@
+INSERT INTO locations VALUES( 2000, 'swabhavtechlabs', '400006', 'mumbai', 'maharashtra', 'IN');

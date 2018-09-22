@@ -1,0 +1,33 @@
+package com.techlabs.service;
+
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.techlabs.repository.CustomerRepository;
+
+@Service("customerservice")
+public class CustomerService {
+	@Autowired
+	private CustomerRepository cust_repo;
+
+	public boolean authenticateCustomer(String username,String password){
+		return this.cust_repo.authenticateCustomer(username, password);
+	}
+	public CustomerRepository getCust_repo() {
+		return cust_repo;
+	}
+	public boolean checkCustomerExists(String username){
+		return this.cust_repo.checkCustomerExists(username);
+	}
+
+	public UUID generateUUID(){
+		return UUID.randomUUID();
+	}
+	@Autowired
+	public void setCust_repo(CustomerRepository cust_repo) {
+		this.cust_repo = cust_repo;
+	}
+
+}

@@ -1,0 +1,85 @@
+package com.techlabs.repo;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.techlabs.entity.Employee;
+
+@Repository
+public class EmployeeRepository {
+
+	@Autowired
+	private SessionFactory factory;
+
+	@SuppressWarnings("unchecked")
+	public List<Employee> getAllEmployees() {
+		Session hbsession = this.factory.openSession();
+
+		hbsession.beginTransaction();
+	
+		Criteria criteria= hbsession.createCriteria(Employee.class);
+				List<Employee> listofemployees=criteria.list();	
+		hbsession.getTransaction().commit();
+
+		return listofemployees;
+
+	}	
+
+	@Transactional
+	public void addEmployee(Employee emp) {
+		Session hbsession = this.factory.openSession();
+		try {
+
+			hbsession.beginTransaction();
+			hbsession.save(emp);
+			hbsession.getTransaction().commit();
+		} catch (Exception ex) {
+			hbsession.getTransaction().rollback();
+			System.out.println(ex.getMessage());
+		} finally {
+			hbsession.close();
+		}
+	}
+
+	public Employee getEmployeeById(long id){
+		Session hbsession = this.factory.openSession();
+
+		hbsession.beginTransaction();
+		return  (Employee) hbsession.get(Employee.class, id);
+
+	}
+	public void updateEmployeeById(Employee employee){
+		Session hbsession = this.factory.openSession();
+		List<Employee> listofemployee=getAllEmployees();
+		for(Employee emp:listofemployee){
+			if(emp.getEmp_id()==employee.getEmp_id()){
+				hbsession.delete(emp);
+			}
+		}
+//		Employee emp=getEmployeeById(employee.getEmp_id());
+//		emp.setEmp_name(employee.getEmp_name());
+//		emp.setSalary(employee.getSalary());
+//		hbsession.beginTransaction();
+		
+		hbsession.save(employee);
+		hbsession.getTransaction().commit();
+	
+	}
+	public SessionFactory getFactory() {
+		return factory;
+	}
+
+	@Autowired
+	public void setFactory(SessionFactory factory) {
+		this.factory = factory;
+	}
+
+}

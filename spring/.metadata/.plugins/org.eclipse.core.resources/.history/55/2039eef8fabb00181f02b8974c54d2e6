@@ -1,0 +1,29 @@
+package com.techlabs.viewmodel;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+
+public class RegistrationVM extends ActionSupport implements ModelDriven<RegistrationVM>{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private RegistrationVM userBean = new RegistrationVM();
+
+	@Override
+	public String execute() {
+		return null;
+
+	}
+
+	public String RegisterUser() {
+		return null;
+	}
+
+	@Override
+	public RegistrationVM getModel() {
+		
+		return userBean;
+	}
+}

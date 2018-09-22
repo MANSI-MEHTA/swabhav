@@ -1,0 +1,16 @@
+1537376056772	Delete element
+1537376066117	Delete element
+1537376070048	Delete element
+1537376074127	Delete element
+1537376081503	Delete element
+1537376086834	Delete element
+1537376095648	Delete element
+1537376491975	Delete element
+1537376498038	Delete element
+1537376502882	Delete element
+1537376507336	Delete element
+1537459237547	Rename field 'userBean'
+1537533072448	Rename local variable 'isauthenticated'
+1537552772822	Rename field 'users'
+1537590653922	Extract method 'countUserAttempts'
+1537590822546	Rename method 'countUserAttempts'

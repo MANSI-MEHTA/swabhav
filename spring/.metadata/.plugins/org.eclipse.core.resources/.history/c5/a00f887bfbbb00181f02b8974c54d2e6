@@ -1,0 +1,17 @@
+package com.techlabs.viewmodel;
+
+public class LoginVM {
+	
+	private String username;
+	private String password;
+	public LoginVM(){
+		
+	}
+	public LoginVM(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
+	
+	
+}

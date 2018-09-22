@@ -1,0 +1,1 @@
+Alter table student Add college_id int;

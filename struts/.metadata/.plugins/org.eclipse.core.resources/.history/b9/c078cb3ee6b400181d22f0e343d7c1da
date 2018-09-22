@@ -1,0 +1,10 @@
+package com.techlabs.model;
+
+public class Product {
+
+	private String id;
+	private String name;
+	private double cost;
+	private int discount;
+	
+}

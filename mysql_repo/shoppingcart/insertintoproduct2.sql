@@ -1,0 +1,1 @@
+Insert into product(product_id,product_name,cost,discount,costafterdiscount)values(31656,"mobile",10000,500,9500);

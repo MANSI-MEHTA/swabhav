@@ -1,0 +1,1 @@
+ALTER TABLE lineitem ADD CONSTRAINT  FOREIGN KEY (order_id) REFERENCES orders(order_id);

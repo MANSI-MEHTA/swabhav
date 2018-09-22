@@ -1,0 +1,24 @@
+package com.techlabs.action;
+
+import org.apache.struts2.ServletActionContext;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.techlabs.service.EmployeeService;
+
+public class ShowEmployeeAction extends ActionSupport{
+	private WebApplicationContext context = WebApplicationContextUtils
+			.getRequiredWebApplicationContext(ServletActionContext
+					.getServletContext());
+	
+	private EmployeeService employeeservice = context
+			.getBean(EmployeeService.class);
+	@Override
+	public String execute() {
+
+		return "success";
+	}
+
+	
+}

@@ -1,0 +1,27 @@
+package com.techlabs.action;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class AddEmployeeAction extends ActionSupport {
+//	WebApplicationContext context = WebApplicationContextUtils
+//			.getRequiredWebApplicationContext(ServletActionContext
+//					.getServletContext());
+	//private AddEmployeeVM employeebeam = (AddEmployeeVM) context
+		//.getBean(AddEmployeeVM.class);
+
+	@Override
+	public String execute() {
+
+		return "success";
+	}
+
+	public void validate() {
+
+	}
+
+//	@Override
+//	public AddEmployeeVM getModel() {
+//		return employeebeam;
+//	}
+
+}

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.SlashesInActionNames" value="">.
+	</constant>
+	<constant name="struts.mapper.action.prefix.enabled" value="true" />
+
+	<package name="default" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="authenticate"
+				class="com.techlabs.interceptor.AuthenticationInterceptor"></interceptor>
+		</interceptors>
+
+
+		<action name="" class="">
+			<result name="success">/views/index.html</result>
+		</action>
+		<action name="viewtransaction" class="com.techlabs.action.ViewTransactionAction"
+			method="execute">
+			<interceptor-ref name="authenticate"></interceptor-ref>
+			<result name="login" type="redirectAction">
+				<param name="actionName">login</param>
+			</result>
+			<result name="success">/views/ViewTransaction.jsp</result>
+		</action>
+		<action name="downloadtransaction" class="com.techlabs.action.DownloadTransaction"
+			method="execute">
+
+		</action>
+		<action name="login" class="com.techlabs.action.LoginAction"
+			method="execute">
+			<result name="login">/views/Login.jsp</result>
+		</action>
+		<action name="logout" class="com.techlabs.action.LogoutAction"
+			method="execute">
+			<result name="success" type="redirectAction">
+				<param name="actionName">login</param>
+			</result>
+		</action>
+		<action name="authenticateuser" class="com.techlabs.action.LoginAction"
+			method="authenticateUser">
+			<result name="success" type="redirectAction">
+				<param name="actionName">viewtransaction</param>
+			</result>
+			<result name="input">/views/Login.jsp</result>
+			<result name="admin" type="redirectAction">
+				<param name="actionName">admin</param>
+
+			</result>
+		</action>
+		<action name="admin" class="com.techlabs.action.AdminAction"
+			method="execute">
+			<result name="success">/views/Admin.jsp</result>
+		</action>
+		<action name="signup" class="com.techlabs.action.RegistrationAction"
+			method="execute">
+			<result name="success">/views/Register.jsp</result>
+
+		</action>
+
+		<action name="registeruser" class="com.techlabs.action.RegistrationAction"
+			method="registerUser">
+			<result name="success" type="redirectAction">
+				<param name="actionName">sendmail</param>
+				<param name="email">${email}</param>
+				<param name="account_no">${account_no}</param>
+			</result>
+			<result name="input">/views/Register.jsp</result>
+		</action>
+		<action name="sendmail" class="com.techlabs.action.SendMailAction"
+			method="execute">
+			<result name="success">/views/index.html</result>
+			<result name="error" type="redirectAction">
+				<param name="actionName">login</param>
+			</result>
+		</action>
+		<action name="activate" class="com.techlabs.action.ActivationAction"
+			method="execute">
+			<result name="success" type="redirectAction">
+				<param name="actionName">login</param>
+			</result>
+
+
+		</action>
+		<action name="withdraw" class="com.techlabs.action.WithdrawAction"
+			method="execute">
+			<result name="success">/views/Withdraw.jsp</result>
+		</action>
+		<action name="deposit" class="com.techlabs.action.DepositAction"
+			method="execute">
+			<result name="success">/views/Deposit.jsp</result>
+		</action>
+		<action name="withdrawamount" class="com.techlabs.action.WithdrawAction"
+			method="withdraw">
+			<result name="success" type="redirectAction">
+				<param name="actionName">viewtransaction</param>
+			</result>
+			<result name="input">/views/Withdraw.jsp</result>
+
+		</action>
+		<action name="depositamount" class="com.techlabs.action.DepositAction"
+			method="deposit">
+			<result name="success" type="redirectAction">
+				<param name="actionName">viewtransaction</param>
+			</result>
+			<result name="input">/views/Deposit.jsp</result>
+		</action>
+		<action name="lock" class="com.techlabs.action.LockAction"
+			method="execute">
+			<result name="success" type="redirectAction">
+				<param name="actionName">viewtransaction</param>
+			</result>
+		</action>
+		<action name="unlock" class="com.techlabs.action.UnlockAction"
+			method="execute">
+			<result name="success" type="redirectAction">
+				<param name="actionName">viewtransaction</param>
+			</result>
+		</action>
+	</package>
+</struts>

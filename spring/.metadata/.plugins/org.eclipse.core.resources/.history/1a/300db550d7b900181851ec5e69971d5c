@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.SlashesInActionNames" value="">.
+	</constant>
+
+	<package name="default" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="authenticate"
+				class="com.techlabs.interceptor.AuthenticationInterceptor"></interceptor>
+		</interceptors>
+
+
+		<action name="" class="">
+			<result name="success">/views/index.html</result>
+		</action>
+		<action name="addemployeeform" class="com.techlabs.action.AddEmployeeAction"
+			method="execute">
+			<result name="success">/views/AddEmployee.jsp</result>
+		</action>
+		<action name="addemployee" class="com.techlabs.action.AddEmployeeAction"
+			method="executePost">
+			<result name="login"></result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">showemployees</param>
+			</result>
+		</action>
+		<action name="showemployees" class="com.techlabs.action.ShowEmployeeAction"
+			method="execute">
+			<interceptor-ref name="authenticate"></interceptor-ref>
+			<result name="login" type="redirectAction">
+				<param name="actionName">login</param>
+			</result>
+			<result name="input"></result>
+			<result name="success">/views/ShowEmployee.jsp</result>
+		</action>
+		<action name="editemployee" class="com.techlabs.action.UpdateEmployeeAction"
+			method="execute">
+			<result name="success">/views/UpdateEmployee.jsp </result>
+		</action>
+		<action name="updateemployee" class="com.techlabs.action.UpdateEmployeeAction"
+			method="executePost">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showemployees</param>
+
+			</result>
+		</action>
+		<action name="login" class="com.techlabs.action.LoginAction"
+			method="execute">
+			<result name="input">/view/Login.jsp</result>
+		</action>
+		<action name="authenticate" class="com.techlabs.action.LoginAction"
+			method="executePost">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showemployees</param>
+
+			</result>
+		</action>
+
+
+	</package>
+</struts>

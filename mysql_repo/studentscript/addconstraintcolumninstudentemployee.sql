@@ -1,0 +1,1 @@
+Alter table studentemployee add constraint foreign key(employee_id) references employee(emp_id)

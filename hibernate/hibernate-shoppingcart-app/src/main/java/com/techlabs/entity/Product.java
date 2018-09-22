@@ -1,30 +1,39 @@
 package com.techlabs.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Product")
 public class Product {
 
 	@Id
-	@Column(name="product_id")
+	@Column(name = "product_id",nullable=false)
 	private int product_id;
-	
-	@Column(name="product_name")
-	private String product_name;
-	
-	@Column(name="cost")
-	private double cost;
-	
-	@Column(name="discount")
-	private double discount;
-	
-	@OneToOne
-	@JoinColumn(name="lineitem_id")
-	private LineItem lineitem;
 
-	
+	@Column(name = "product_name",nullable=false)
+	private String product_name;
+
+	@Column(name = "cost",nullable=false)
+	private double cost;
+
+	@Column(name = "discount",nullable=false)
+	private double discount;
+
+	@OneToMany(mappedBy = "product",cascade=CascadeType.ALL)
+	private Set<LineItem> setlineitem=new HashSet<LineItem>();
+
+	public Product(){
+		
+	}
 	public Product(int product_id, String product_name, double cost,
 			double discount) {
 		super();
@@ -65,15 +74,14 @@ public class Product {
 	public void setDiscount(double discount) {
 		this.discount = discount;
 	}
-
-	public LineItem getLineitem() {
-		return lineitem;
+	public Set<LineItem> getSetlineitem() {
+		return setlineitem;
 	}
-
-	public void setLineitem(LineItem lineitem) {
-		this.lineitem = lineitem;
+	public void setSetlineitem(Set<LineItem> setlineitem) {
+		this.setlineitem = setlineitem;
 	}
+	
+	
 	
 	
 }
-

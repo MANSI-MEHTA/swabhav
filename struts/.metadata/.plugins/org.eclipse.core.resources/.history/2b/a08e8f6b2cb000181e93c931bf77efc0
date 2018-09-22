@@ -1,8 +1,0 @@
-<html>
-<body>
-<h1>Welcome to struts </h1>
-<a href="/welcome-struts/home">Home</a>
-<a href="/welcome-struts/browse">Home</a>
-
-</body>
-</html>

@@ -1,0 +1,1 @@
+alter table lineitem add constraint foreign key(product_id) references product(product_id)

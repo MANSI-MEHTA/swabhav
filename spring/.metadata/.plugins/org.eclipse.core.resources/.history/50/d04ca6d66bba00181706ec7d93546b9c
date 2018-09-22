@@ -1,0 +1,28 @@
+package com.techlabs.repository;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class CustomerRepository {
+	
+	@Autowired
+	private SessionFactory factory;
+	private Session hbsession;
+	public boolean authenticateCustomer(String username,String password){
+		
+		return false;
+	}
+	
+	public SessionFactory getFactory() {
+		return factory;
+	}
+
+	@Autowired
+	public void setFactory(SessionFactory factory) {
+		this.factory = factory;
+	}
+
+}

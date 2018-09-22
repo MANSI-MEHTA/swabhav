@@ -1,0 +1,1 @@
+alter table orders Add constraint FOREIGN KEY (customer_id) REFERENCES customer(cust_id); 

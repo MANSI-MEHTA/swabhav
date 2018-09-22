@@ -1,0 +1,8 @@
+127.0.0.1 - - [12/Sep/2018:16:54:49 +0530] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [12/Sep/2018:16:54:53 +0530] "GET /Struts-Spring-App/welcome HTTP/1.1" 200 140
+127.0.0.1 - - [12/Sep/2018:17:04:05 +0530] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [12/Sep/2018:17:04:06 +0530] "GET /shopping-cart-app/ HTTP/1.1" 200 241
+0:0:0:0:0:0:0:1 - - [12/Sep/2018:17:04:14 +0530] "GET /shopping-cart-app/addproduct HTTP/1.1" 200 2660
+0:0:0:0:0:0:0:1 - - [12/Sep/2018:17:04:14 +0530] "GET /shopping-cart-app/struts/utils.js HTTP/1.1" 200 4719
+0:0:0:0:0:0:0:1 - - [12/Sep/2018:17:04:14 +0530] "GET /shopping-cart-app/struts/xhtml/styles.css HTTP/1.1" 200 1633
+0:0:0:0:0:0:0:1 - - [12/Sep/2018:17:04:23 +0530] "POST /shopping-cart-app/showcart.action;jsessionid=AEA1725D2002EBCA4423BACD56A12BBC HTTP/1.1" 200 3310

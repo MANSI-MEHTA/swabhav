@@ -1,0 +1,1 @@
+call updatedateinfoolog(10,"100","mumbai");

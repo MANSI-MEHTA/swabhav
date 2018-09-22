@@ -1,4 +1,6 @@
 INDEX VERSION 1.127
+C:\swabhav\struts\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1247094647.index
+\Struts-Spring-App\src\main\java
 C:\swabhav\struts\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3025982258.index
 \welcome-struts\src\main\java
 C:\swabhav\struts\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2497537337.index
@@ -9,5 +11,7 @@ C:\swabhav\struts\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\39515083
 \welcome-struts\src\main\java
 C:\swabhav\struts\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1620834654.index
 \student-college-app\src\main\java
+C:\swabhav\struts\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4047009552.index
+\shopping-cart-app\src\main\java
 C:\swabhav\struts\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3644278604.index
 \welcome-struts\src\main\java

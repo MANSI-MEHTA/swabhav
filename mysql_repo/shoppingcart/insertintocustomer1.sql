@@ -1,0 +1,1 @@
+Insert into customer(cust_id,name,address,email,gender)values(1000,"varshil","mumbai","varshil@gmail.com","male");

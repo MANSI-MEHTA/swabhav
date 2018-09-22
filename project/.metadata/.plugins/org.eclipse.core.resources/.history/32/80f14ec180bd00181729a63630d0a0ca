@@ -1,0 +1,29 @@
+package com.techlabs.service;
+
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.techlabs.repo.UserTransactionRepo;
+
+@Service("transactionservice")
+public class UserTransactionService {
+
+	@Autowired
+	private UserTransactionRepo transaction_repo;
+	
+	public long generateTransactionId(){
+		return Math.abs(UUID.randomUUID().getMostSignificantBits());
+	}
+
+	public UserTransactionRepo getTransaction_repo() {
+		return transaction_repo;
+	}
+
+	public void setTransaction_repo(UserTransactionRepo transaction_repo) {
+		this.transaction_repo = transaction_repo;
+	}
+	
+	
+}

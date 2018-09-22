@@ -1,0 +1,10 @@
+DELIMITER //;
+DROP TRIGGER IF EXISTS before_insert_check_And_update;
+
+CREATE TRIGGER before_insert_check_And_update
+	BEFORE INSERT ON bar
+
+BEGIN
+UPDATE bar SET NEW.NAME=UPPER(NEW.NAME);
+END//
+DELIMITER ;

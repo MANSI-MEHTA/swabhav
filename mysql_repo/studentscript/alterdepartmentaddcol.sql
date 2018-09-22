@@ -1,0 +1,1 @@
+Alter table department Add college_id int;

@@ -1,0 +1,48 @@
+package com.techlabs.viewmodel;
+
+import java.util.HashMap;
+import java.util.List;
+
+import com.techlabs.model.Product;
+
+public class AddProductVM {
+
+	private HashMap<String, String> hashofproducts = new HashMap<String, String>();
+	private int quantity = 1;
+	private String id;
+
+	public AddProductVM() {
+
+	}
+
+	public void setoptions(List<Product> list) {
+		for (Product product : list) {
+			hashofproducts.put(product.getId(), product.getName());
+		}
+	}
+
+	public HashMap<String, String> getHashofproducts() {
+		return hashofproducts;
+	}
+
+	public void setHashofproducts(HashMap<String, String> hashofproducts) {
+		this.hashofproducts = hashofproducts;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+}

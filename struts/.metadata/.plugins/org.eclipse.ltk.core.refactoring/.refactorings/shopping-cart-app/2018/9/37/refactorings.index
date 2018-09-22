@@ -1,0 +1,11 @@
+1536571615217	Delete element
+1536571620013	Delete element
+1536579902650	Rename field 'productoption'
+1536583357137	Rename resource 'ShowProduct.jsp'
+1536594638515	Delete element
+1536599545978	Rename field 'lineitemsevice'
+1536601718468	Rename field 'productsincart'
+1536651486935	Extract method 'getlistofproductisncart'
+1536662248371	Extract method 'addtolineitem'
+1536667083607	Rename type 'DeleteProductAction'
+1536755718690	Rename type 'UpdateLineItem'

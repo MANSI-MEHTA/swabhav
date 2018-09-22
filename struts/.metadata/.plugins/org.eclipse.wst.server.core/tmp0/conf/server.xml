@@ -124,7 +124,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\swabhav\struts\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\swabhav\struts\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\student-college-app" path="/student-college-app" reloadable="true" source="org.eclipse.jst.j2ee.server:student-college-app"/><Context docBase="C:\swabhav\struts\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\form-validation-strut-app" path="/form-validation-strut-app" reloadable="true" source="org.eclipse.jst.j2ee.server:form-validation-strut-app"/></Host>
+      <Context docBase="C:\swabhav\struts\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\swabhav\struts\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\shopping-cart-app" path="/shopping-cart-app" reloadable="true" source="org.eclipse.jst.j2ee.server:shopping-cart-app"/></Host>
     </Engine>
   </Service>
 </Server>

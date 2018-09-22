@@ -1,0 +1,69 @@
+package com.techlabs.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Product")
+public class Product {
+
+	@Id
+	@Column(name="Product_id")
+	private int id;
+	
+	@Column(name="Product_name")
+	private String name;
+	
+	@Column(name="cost")
+	private double cost;
+	
+	@Column(name="discount")
+	private double discount;
+
+	public Product() {
+
+	}
+
+	public Product(int id, String name, double cost, double discount) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.cost = cost;
+		this.discount = discount;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getCost() {
+		return cost;
+	}
+
+	public void setCost(double cost) {
+		this.cost = cost;
+	}
+
+	public double getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(double discount) {
+		this.discount = discount;
+	}
+
+}

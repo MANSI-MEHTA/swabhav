@@ -1,0 +1,41 @@
+package com.techlabs.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.techlabs.entity.Employee;
+import com.techlabs.repo.EmployeeRepository;
+
+@Service
+public class EmployeeService {
+
+	@Autowired
+	private EmployeeRepository emp_repo;
+
+	public List<Employee> getAllEmployees(){
+		return this.emp_repo.getAllEmployees();
+	}
+	public void addEmployee(Employee emp){
+		emp_repo.addEmployee(emp);
+	}
+	public Employee getEmployeeById(long id){
+		List<Employee> listofemployees=this.emp_repo.getAllEmployees();
+		for(Employee employee:listofemployees){
+			if(employee.getEmp_id()==id){
+				return employee;
+			}
+		}
+		return null;
+	}
+	public EmployeeRepository getEmp_repo() {
+		return emp_repo;
+	}
+
+	public void setEmp_repo(EmployeeRepository emp_repo) {
+		this.emp_repo = emp_repo;
+	}
+	
+	
+}

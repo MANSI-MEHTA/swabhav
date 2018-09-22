@@ -1,0 +1,50 @@
+package com.techlabs.action;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.techlabs.entity.Employee;
+import com.techlabs.service.EmployeeService;
+
+public class ShowEmployeeAction extends ActionSupport implements SessionAware{
+	private WebApplicationContext context = WebApplicationContextUtils
+			.getRequiredWebApplicationContext(ServletActionContext
+					.getServletContext());
+	private List<Employee> listofemployees=new ArrayList<Employee>();
+	private EmployeeService employeeservice = context
+			.getBean(EmployeeService.class);
+	private SessionMap<String, Object> sessionmap;
+	@Override
+	public String execute() {
+		listofemployees=employeeservice.getAllEmployees();
+		
+		return "success";
+	}
+	public List<Employee> getListofemployees() {
+		return listofemployees;
+	}
+	public void setListofemployees(List<Employee> listofemployees) {
+		this.listofemployees = listofemployees;
+	}
+	public EmployeeService getEmployeeservice() {
+		return employeeservice;
+	}
+	public void setEmployeeservice(EmployeeService employeeservice) {
+		this.employeeservice = employeeservice;
+	}
+	@Override
+	public void setSession(Map<String, Object> session) {
+		sessionmap=(SessionMap<String, Object>)session;
+		
+	}
+	
+	
+}

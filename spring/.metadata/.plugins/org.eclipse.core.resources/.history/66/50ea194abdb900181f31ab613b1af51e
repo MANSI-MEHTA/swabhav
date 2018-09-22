@@ -1,0 +1,44 @@
+package com.techlabs.action;
+
+import org.apache.struts2.ServletActionContext;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+import com.techlabs.entity.Employee;
+import com.techlabs.service.EmployeeService;
+import com.techlabs.viewmodel.AddEmployeeVM;
+
+public class AddEmployeeAction extends ActionSupport implements
+		ModelDriven<AddEmployeeVM> {
+	WebApplicationContext context = WebApplicationContextUtils
+			.getRequiredWebApplicationContext(ServletActionContext
+					.getServletContext());
+	private AddEmployeeVM employeebeam = new AddEmployeeVM();
+	private EmployeeService employeeservice = context
+			.getBean(EmployeeService.class);
+
+	@Override
+	public String execute() {
+
+		return "success";
+	}
+
+	public String executePost() {
+
+		employeeservice.addEmployee(new Employee(employeebeam.getEmp_id(),
+				employeebeam.getEmp_name(), employeebeam.getSalary()));
+		return "success";
+	}
+
+	public void validate() {
+
+	}
+
+	@Override
+	public AddEmployeeVM getModel() {
+		return employeebeam;
+	}
+
+}

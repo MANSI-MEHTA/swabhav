@@ -1,0 +1,81 @@
+package com.techlabs.repository;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.techlabs.entity.Cart;
+import com.techlabs.entity.Customers;
+
+@Repository
+public class CartRepository {
+	@Autowired
+	private SessionFactory factory;
+
+	public SessionFactory getFactory() {
+		return factory;
+	}
+
+	@Autowired
+	public void setFactory(SessionFactory factory) {
+		this.factory = factory;
+	}
+
+	public void insertlineitemincarttable(Set<Cart> setofcart, String username,UUID cust_id) {
+	
+		System.out.println(username);
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+		Query query = hbsession
+				.createQuery("from Cust_Cart where cust_id=:id");
+		query.setParameter("id", cust_id);
+		//Customers customer = (Customers) query.uniqueResult();
+		
+		hbsession.getTransaction().commit();
+		hbsession.close();
+
+		//customer.setCart(setofcart);
+		// for (Iterator<Cart> iterator2 = setofcart.iterator();
+		// iterator2.hasNext();){
+		// System.out.println("\n"+1);
+		// Cart cart = (Cart) iterator2.next();
+		// hbsession.save(cart);
+		// }
+		//
+//		Customers customer1=customer;
+//		hbsession.save(customer1);
+		//System.out.println("From repository" + customer);
+	}
+
+	public List<Cart> getCartOfCustomerFromDB(String username) {
+		System.out.println("from cart repository method" + username);
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+		Query query = hbsession
+				.createQuery("from Customers where username=:user");
+		query.setParameter("user", username);
+		Customers customer = (Customers) query.uniqueResult();
+		System.out.println("retrieved through cust_id" + customer);
+//		Set<Cart> setofcart = customer.getCart();
+//
+//		for (Iterator<Cart> iterator2 = setofcart.iterator(); iterator2
+//				.hasNext();) {
+//			Cart certName = (Cart) iterator2.next();
+//			System.out.println("Product id: " + certName.getProduct_id());
+//		}
+		// Customers customer=(Customers)
+		// hbsession.get(Customers.class,cust_id);
+		// System.out.println("retrieved through cust_id" + customer);
+		hbsession.getTransaction().commit();
+		return null;
+
+	}
+
+}

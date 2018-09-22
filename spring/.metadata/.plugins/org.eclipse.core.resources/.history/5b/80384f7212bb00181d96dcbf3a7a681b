@@ -1,0 +1,25 @@
+package com.techlabs.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.techlabs.repository.CartRepository;
+
+@Service
+public class CartService {
+
+	@Autowired
+	private CartRepository cart_repo;
+
+	
+	public CartRepository getCart_repo() {
+		return cart_repo;
+	}
+
+	@Autowired
+	public void setCart_repo(CartRepository cart_repo) {
+		this.cart_repo = cart_repo;
+	}
+	
+	
+}

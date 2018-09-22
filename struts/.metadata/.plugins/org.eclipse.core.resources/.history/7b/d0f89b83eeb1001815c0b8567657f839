@@ -1,7 +1,0 @@
-package com.techlabs.interceptors;
-
-import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
-
-public class GetCollegeInterceptor extends AbstractInterceptor{
-
-}

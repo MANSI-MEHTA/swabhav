@@ -1,0 +1,1 @@
+Alter table orders add customer_id int;

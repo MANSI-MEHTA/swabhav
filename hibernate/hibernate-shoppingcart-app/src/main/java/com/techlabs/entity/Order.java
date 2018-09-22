@@ -1,7 +1,9 @@
 package com.techlabs.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,15 +20,18 @@ public class Order {
 	@Column(name = "order_id", nullable = false)
 	private long order_id;
 
-	@Column(name = "order_date")
+	@Column(name = "order_date",nullable=false)
 	private String date;
 
 	@ManyToOne
 	@JoinColumn(name = "cust_id", nullable = false)
 	private Customer customer;
 
-	@OneToMany(mappedBy = "lineitem")
-	Set<LineItem> setoflineitems;
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	private Set<LineItem> setoflineitems=new HashSet<LineItem>();
+
+	public Order() {
+	}
 
 	public Order(long l, String date, Customer customer) {
 		super();
@@ -66,6 +71,5 @@ public class Order {
 	public void setSetoflineitems(Set<LineItem> setoflineitems) {
 		this.setoflineitems = setoflineitems;
 	}
-	
 
 }

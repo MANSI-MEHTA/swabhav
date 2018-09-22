@@ -1,5 +1,0 @@
-package com.techlabs.actions;
-
-public interface GetCollege {
-	public 	void getCollegesForOptions()
-}

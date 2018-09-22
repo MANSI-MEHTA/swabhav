@@ -1,0 +1,44 @@
+package com.techlabs.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import com.techlabs.model.LineItem;
+
+public class LineItemService {
+	private List<LineItem> listOfLineItems = new ArrayList<LineItem>();
+	private static LineItemService object;
+
+	private LineItemService() {
+
+	}
+
+	public static LineItemService getInstanceOf() {
+		if (object == null) {
+			object = new LineItemService();
+		}
+		return object;
+	}
+
+	public void addproductsincart(LineItem lineitem) {
+		listOfLineItems.add(lineitem);
+	}
+
+	public List<LineItem> getAllLineItem() {
+		return listOfLineItems;
+	}
+
+	public void deleteLineById(long id) {
+		for (LineItem lineitem : listOfLineItems) {
+			if (lineitem.getId() == id) {
+				listOfLineItems.remove(lineitem);
+			}
+		}
+	}
+
+	public long generateLineItemId() {
+		return Math.abs(UUID.randomUUID().getMostSignificantBits());
+	}
+
+}

@@ -16,16 +16,20 @@ import javax.persistence.Table;
 public class Customer {
 
 	@Id
+	@Column(name="cust_id",nullable=false)
 	private UUID cust_id;
 
-	@Column(name = "cust_name")
+	@Column(name = "cust_name",nullable=false)
 	private String cust_name;
 
-	@Column(name = "address")
+	@Column(name = "address",nullable=false)
 	private String address;
 
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 	private Set<Order> order = new HashSet<Order>();
+
+	public Customer() {
+	}
 
 	public Customer(UUID cust_id, String cust_name, String address) {
 		super();

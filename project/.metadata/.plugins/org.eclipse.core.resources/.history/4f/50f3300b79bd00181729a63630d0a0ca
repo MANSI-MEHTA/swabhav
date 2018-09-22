@@ -1,0 +1,14 @@
+package com.techlabs.action;
+
+public class DepositAction extends ActivationAction{
+	
+	@Override
+	public String execute(){
+		return "success";
+	}
+
+	public String deposit(){
+		
+		return "success";
+	}
+}

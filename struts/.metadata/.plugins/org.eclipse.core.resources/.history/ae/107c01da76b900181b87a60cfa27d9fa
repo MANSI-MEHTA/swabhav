@@ -1,0 +1,40 @@
+package com.techlabs.action;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class UpdateLineItemAction extends ActionSupport {
+	private long id;
+	private int a=5;
+	public int getA() {
+		return a;
+	}
+
+	public void setA(int a) {
+		this.a = a;
+	}
+
+	private int quantity;
+
+	@Override
+	public String execute() {
+		System.out.println("id:" + id + "\nquanity is " + quantity);
+		return "success";
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+}

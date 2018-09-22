@@ -1,0 +1,20 @@
+package com.techlabs.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Cart")
+public class Cart {
+	
+	@Id
+	@Column(name="cart_id")
+	private long cart_id;
+	@Column(name="quantity")
+	private int quantity;
+	@Column(name="product_id")
+	private int product_id;
+
+}

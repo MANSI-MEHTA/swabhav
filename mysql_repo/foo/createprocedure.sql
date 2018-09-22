@@ -1,0 +1,6 @@
+DELIMITER //
+CREATE PROCEDURE updatedateinfoolog(ID int,DESCRIPTION varchar(50),LOCATION varchar(50))
+BEGIN 
+INSERT INTO foolog values(ID,DESCRIPTION,LOCATION,now());
+END //
+DELIMITER ;

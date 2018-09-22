@@ -1,0 +1,24 @@
+package com.techlabs.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.techlabs.model.Product;
+
+public class LineItemService {
+	private List<Product> productsincart=new ArrayList<Product>();
+	
+	public void addproductsincart(Product product) {
+		productsincart.add(product);
+	}
+
+	public List<Product> getProductsincart() {
+		return productsincart;
+	}
+
+	public void setProductsincart(List<Product> productsincart) {
+		this.productsincart = productsincart;
+	}
+	
+	
+}

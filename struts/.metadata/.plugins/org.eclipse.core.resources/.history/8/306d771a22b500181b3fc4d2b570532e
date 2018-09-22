@@ -1,0 +1,28 @@
+package com.techlabs.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.techlabs.model.LineItem;
+
+public class LineItemService {
+	private List<LineItem> listOfLineItems = new ArrayList<LineItem>();
+
+	public void addproductsincart(LineItem lineitem) {
+		listOfLineItems.add(lineitem);
+	}
+
+	public List<LineItem> getAllLineItem() {
+		return listOfLineItems;
+	}
+
+	public void deleteLineById(String id) {
+		for (LineItem lineitem : listOfLineItems) {
+			if (lineitem.getId().equals(id)) {
+				listOfLineItems.remove(lineitem);
+			}
+		}
+	}
+
+	
+}

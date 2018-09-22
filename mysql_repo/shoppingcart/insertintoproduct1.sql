@@ -1,0 +1,1 @@
+Insert into product(product_id,product_name,cost,discount,costafterdiscount)values(31511,"laptop",50000,10000,49000);

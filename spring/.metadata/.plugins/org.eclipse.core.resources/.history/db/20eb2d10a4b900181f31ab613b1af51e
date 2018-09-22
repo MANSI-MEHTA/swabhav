@@ -1,0 +1,23 @@
+package com.techlabs.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name="Employee")
+public class Employee {
+
+	@Id
+	@GeneratedValue(generator="UUID2")
+	@GenericGenerator(name="UUID" ,strategy="uuid2")
+	private Long emp_id;
+	private String emp_name;
+	private double salary;
+	
+	
+	
+}

@@ -1,0 +1,56 @@
+package com.techlabs.action;
+
+import org.apache.struts2.ServletActionContext;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.techlabs.service.CustomerService;
+
+public class LoginAction extends ActionSupport {
+
+	private String username;
+	private String passsword;
+	private WebApplicationContext context = WebApplicationContextUtils
+			.getRequiredWebApplicationContext(ServletActionContext
+					.getServletContext());
+
+	private CustomerService customerservice = (CustomerService) context
+			.getBean("customerservice");
+
+	@Override
+	public String execute() {
+		
+		return "input";
+	}
+
+	public String executePost(){
+		System.out.prinyln(username);
+		System.out.println(password);
+		return "success";
+	}
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPasssword() {
+		return passsword;
+	}
+
+	public void setPasssword(String passsword) {
+		this.passsword = passsword;
+	}
+
+	public CustomerService getCustomerservice() {
+		return customerservice;
+	}
+
+	public void setCustomerservice(CustomerService customerservice) {
+		this.customerservice = customerservice;
+	}
+	
+}

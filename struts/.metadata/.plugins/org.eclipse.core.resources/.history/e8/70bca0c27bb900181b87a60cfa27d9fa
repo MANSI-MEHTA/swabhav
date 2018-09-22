@@ -1,0 +1,48 @@
+package com.techlabs.action;
+
+import java.util.HashMap;
+import java.util.List;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class UpdateLineItemAction extends ActionSupport {
+//	private long id;
+//	private int a=5;
+	  private HashMap<Long, Integer> data;
+	
+	//private int quantity;
+	@Override
+	public String execute() {
+		//System.out.println("id:" + id + "\nquanity is " + quantity);
+		System.out.println(data);
+		return "success";
+	}
+
+	public HashMap<Long, Integer> getData() {
+		 System.out.println("Getter Call");
+		return data;
+	}
+
+	public void setData(HashMap<Long, Integer> data) {
+		 System.out.println("Setter Call Flow");
+		this.data = data;
+	}
+
+	
+//	public int getQuantity() {
+//		return quantity;
+//	}
+//
+//	public void setQuantity(int quantity) {
+//		this.quantity = quantity;
+//	}
+//
+//	public long getId() {
+//		return id;
+//	}
+//
+//	public void setId(long id) {
+//		this.id = id;
+//	}
+//
+}

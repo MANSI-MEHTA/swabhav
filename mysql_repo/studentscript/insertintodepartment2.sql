@@ -1,0 +1,1 @@
+insert into department(dept_id,dept_name,college_id)values(1001,"extc",3046)

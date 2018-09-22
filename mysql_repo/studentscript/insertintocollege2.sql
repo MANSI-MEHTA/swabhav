@@ -1,0 +1,1 @@
+Insert into college(id,name,location)values(1022,"sj","palghar,mumbai");

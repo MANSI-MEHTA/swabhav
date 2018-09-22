@@ -1,0 +1,1 @@
+SELECT index_schema,column_name FROM information_schema.statistics where table_schema="foodb"

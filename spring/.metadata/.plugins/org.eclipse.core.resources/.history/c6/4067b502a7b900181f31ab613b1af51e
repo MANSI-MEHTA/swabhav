@@ -1,0 +1,17 @@
+package com.techlabs.action;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+import com.techlabs.viewmodel.AddEmployeeVM;
+
+public class AddEmployeeAction extends ActionSupport implements ModelDriven<AddEmployeeVM>{
+	
+	
+	
+	@Override
+	public AddEmployeeVM getModel() {
+	
+		return null;
+	}
+
+}

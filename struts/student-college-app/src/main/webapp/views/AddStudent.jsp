@@ -29,8 +29,6 @@
 		<s:radio name="studentBeam.gender" label="Gender"
 			list="#{'Male':'Male','Female':'Female','Others':'Others'}"></s:radio>
 
-
-
 		<s:submit value="ADD"></s:submit>
 	</s:form>
 </body>

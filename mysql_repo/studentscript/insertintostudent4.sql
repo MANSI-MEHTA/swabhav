@@ -1,0 +1,1 @@
+Insert into student(rollno,fname,lname,cgpi,gender)values(104,"shubham","vora",9.5,"male");

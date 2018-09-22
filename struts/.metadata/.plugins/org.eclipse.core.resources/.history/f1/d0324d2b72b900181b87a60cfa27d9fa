@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.SlashesInActionNames" value="">
+	</constant>
+
+	<package name="main" namespace="/" extends="struts-default">
+		
+		<action name="" class="">
+			<result name="success">/views/index.html</result>
+		</action>
+		<action name="addproduct" class="com.techlabs.action.AddProductAction"
+			method="execute">
+			<result name="success">/views/AddProduct.jsp</result>
+		</action>
+		<action name="showcart" class="com.techlabs.action.AddProductAction"
+			method="executePost">
+			<!-- <result name="showcart" type="redirectAction"> <param name="actionName">addproduct</param> -->
+			<result name="showcart" type="chain">addproduct
+
+			</result>
+		</action>
+		<action name="deletelineitem" class="com.techlabs.action.DeleteLineItemAction">
+			<result name="success" type="chain">addproduct</result>
+		</action>
+		<action name="deletelineitem" class="com.techlabs.action.DeleteLineItemAction">
+			<result name="success" type="chain">addproduct</result>
+		</action>
+		<!-- <action name="updatelineitem" class="com.techlabs.action.UpdateLineItemAction">
+			<result name="success" type="json"></result>
+		</action> -->
+		
+	</package>
+</struts>

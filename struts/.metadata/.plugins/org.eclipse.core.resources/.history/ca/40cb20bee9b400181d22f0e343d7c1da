@@ -1,9 +1,0 @@
-package com.techlabs.viewmodel;
-
-import java.util.HashMap;
-
-public class AddProductVM {
-
-	HashMap<Integer, String> productoption=new HashMap<Integer,String>();
-	
-}

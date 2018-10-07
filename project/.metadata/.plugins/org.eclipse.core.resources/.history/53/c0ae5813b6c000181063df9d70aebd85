@@ -1,0 +1,25 @@
+package com.techlabs.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.techlabs.repository.ContactRepo;
+
+@Service("contactservice")
+public class ContactService {
+
+	@Autowired
+	private ContactRepo contact_repo;
+
+	
+	public ContactRepo getContact_repo() {
+		return contact_repo;
+	}
+
+	@Autowired
+	public void setContact_repo(ContactRepo contact_repo) {
+		this.contact_repo = contact_repo;
+	}
+	
+	
+}

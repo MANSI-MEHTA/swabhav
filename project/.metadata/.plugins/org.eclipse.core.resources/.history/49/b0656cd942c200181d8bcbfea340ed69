@@ -1,0 +1,22 @@
+package com.techlabs.repository;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class SubscriptionRepo {
+
+	@Autowired
+	private SessionFactory factory;
+
+		public SessionFactory getFactory() {
+		return factory;
+	}
+
+	@Autowired
+	public void setFactory(SessionFactory factory) {
+		this.factory = factory;
+	}
+	
+}

@@ -1,0 +1,34 @@
+1537771301307	Delete element
+1537771307156	Delete element
+1537771373066	Rename resource 'views'
+1537860048567	Rename type 'tenantService'
+1537869819796	Rename field 'tenant'
+1537871980786	Rename field 'session'
+1537873974127	Rename local variable 'ispresent'
+1537874032980	Rename field 'isurlpresent'
+1537874042301	Rename field 'isurlExixted'
+1537874209406	Move file
+1537891825783	Rename field 'isContactExisted'
+1537891840539	Rename field 'urlExist'
+1537951492298	Delete element
+1537982789890	Delete element
+1537983440387	Rename field 'subscription_repo'
+1538032997546	Move 'subscription.html' to 'spa'
+1538033004683	Move 'subscription.html' to 'partial-views'
+1538072679039	Rename local variable 'partners'
+1538214498525	Move 'angular-route.js' to 'spa'
+1538214502526	Move 'angular.js' to 'spa'
+1538214561718	Move 'scm.js' to 'spa'
+1538214721652	Move 'angular-route.js' to 'partial-views'
+1538214724659	Move 'angular.js' to 'partial-views'
+1538214728275	Move 'scm.js' to 'partial-views'
+1538216878484	Move file
+1538216885970	Move 'index.html' to 'partial-views'
+1538216889111	Move 'angular-route.js' to 'partial-views'
+1538217144185	Move 'index.html' to 'spa'
+1538217228211	Move 'angular.js' to 'spa'
+1538217231484	Move 'scm.js' to 'spa'
+1538217235603	Move 'angular-route.js' to 'spa'
+1538222518528	Move 'angular-route.js' to 'partial-views'
+1538222523333	Move 'angular.js' to 'partial-views'
+1538222526289	Move 'scm.js' to 'partial-views'

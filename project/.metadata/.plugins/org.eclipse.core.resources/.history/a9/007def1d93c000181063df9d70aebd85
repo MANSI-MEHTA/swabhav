@@ -1,0 +1,163 @@
+package com.techlabs.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Tenant")
+public class Tenant {
+
+	@Id
+	@Column(name = "tenant_id")
+	private long tenant_id;
+
+	@Column(name = "tenant_name")
+	private String tenant_name;
+
+	@Column(name = "address")
+	private String address;
+
+	@Column(name = "city")
+	private String city;
+
+	@Column(name = "state")
+	private String state;
+
+	@Column(name = "pincode")
+	private int pincode;
+
+	@Column(name = "country")
+	private String country;
+
+	@Column(name = "url")
+	private String website_url;
+
+	@Column(name = "currency")
+	private String currency;
+
+	@OneToOne
+	@JoinColumn(name = "partner_id")
+	private Partner partner;
+
+	@OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL)
+	private Set<Subscription> subscriptions = new HashSet<Subscription>();
+
+	public Tenant() {
+
+	}
+
+	public Tenant(long tenant_id, String tenant_name, String address,
+			String city, String state, int pincode, String country,
+			String website_url, String currency, Partner partner) {
+		super();
+		this.tenant_id = tenant_id;
+		this.tenant_name = tenant_name;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.pincode = pincode;
+		this.country = country;
+		this.website_url = website_url;
+		this.currency = currency;
+		this.partner = partner;
+	}
+
+	public long getTenant_id() {
+		return tenant_id;
+	}
+
+	public void setTenant_id(long tenant_id) {
+		this.tenant_id = tenant_id;
+	}
+
+	public String getTenant_name() {
+		return tenant_name;
+	}
+
+	public void setTenant_name(String tenant_name) {
+		this.tenant_name = tenant_name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public int getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(int pincode) {
+		this.pincode = pincode;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getWebsite_url() {
+		return website_url;
+	}
+
+	public void setWebsite_url(String website_url) {
+		this.website_url = website_url;
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	public Partner getPartner() {
+		return partner;
+	}
+
+	public void setPartner(Partner partner) {
+		this.partner = partner;
+	}
+
+	public Set<Subscription> getSubscriptions() {
+		return subscriptions;
+	}
+
+	public void setSubscriptions(Set<Subscription> subscriptions) {
+		this.subscriptions = subscriptions;
+	}
+
+	
+}

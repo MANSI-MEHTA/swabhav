@@ -1,7 +1,0 @@
-package com.techlabs.viewmodel;
-
-public class DepositVM {
-
-	private double amount;
-	
-}

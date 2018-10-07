@@ -1,0 +1,85 @@
+package com.techlabs.repository;
+
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.techlabs.entity.Partner;
+import com.techlabs.entity.Tenant;
+
+@Repository
+public class TenantRepo {
+	@Autowired
+	private SessionFactory factory;
+
+	public boolean checkTanantURLExists(String url) {
+
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+		Query query = hbsession.createQuery("FROM Tenant WHERE url=:url");
+		query.setParameter("url", url);
+		List<Tenant> listOfTenant = query.list();
+		hbsession.getTransaction().commit();
+		hbsession.close();
+		if (listOfTenant.isEmpty()) {
+			return false;
+		}
+
+		return true;
+
+	}
+	public List<Tenant> getAllTenants(){
+		List<Partner> tenants=null;
+		Session hbsession=factory.openSession();
+		hbsession.beginTransaction();
+		Query query=hbsession.createQuery("FROM Tenant");
+		tenants=query.list();
+		hbsession.getTransaction().commit();
+
+		return tenants;
+	}
+	public void createNewtenant(Tenant newtenant) {
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+		hbsession.save(newtenant);
+		hbsession.getTransaction().commit();
+		hbsession.close();
+	}
+
+	public Tenant getTenantById(long tenant_id) {
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+		Query query = hbsession.createQuery("FROM Tenant WHERE tenant_id=:id");
+		query.setParameter("id", tenant_id);
+		Tenant tenant = (Tenant) query.uniqueResult();
+		hbsession.getTransaction().commit();
+		hbsession.close();
+
+		return tenant;
+	}
+	public Tenant getTenantByUrl(String url) {
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+		Query query = hbsession.createQuery("FROM Tenant WHERE url=:url");
+		query.setParameter("url", url);
+		Tenant tenant = (Tenant) query.uniqueResult();
+		hbsession.getTransaction().commit();
+		hbsession.close();
+
+		return tenant;
+	}
+
+	public SessionFactory getFactory() {
+		return factory;
+	}
+
+	@Autowired
+	public void setFactory(SessionFactory factory) {
+		this.factory = factory;
+	}
+
+}

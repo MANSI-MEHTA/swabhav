@@ -1,0 +1,31 @@
+package com.techlabs.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.techlabs.entity.Credential;
+import com.techlabs.repository.LoginRepo;
+
+@Service("loginservice")
+public class LoginService {
+
+	@Autowired
+	private LoginRepo login_repo;
+
+	public void saveCredentials(Credential credential){
+		this.login_repo.saveCredentials(credential);
+	}
+	public Credential authenticate(String username,String password){
+		return this.login_repo.authenticate(username, password);
+	}
+	public LoginRepo getLogin_repo() {
+		return login_repo;
+	}
+
+	@Autowired
+	public void setLogin_repo(LoginRepo login_repo) {
+		this.login_repo = login_repo;
+	}
+	
+	
+}

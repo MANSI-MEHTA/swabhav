@@ -1,0 +1,48 @@
+package com.techlabs.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Module")
+public class Module {
+
+	@Id
+	@Column(name="module_id")
+	private long module_id;
+	
+	@Column(name="name")
+	private String name;
+	
+	@ManyToOne
+	@JoinColumn(name="cmp_id")
+	private Company company
+	
+	public Module(){
+		
+	}
+	public Module(long module_id, String name) {
+		super();
+		this.module_id = module_id;
+		this.name = name;
+	}
+	public long getModule_id() {
+		return module_id;
+	}
+	public void setModule_id(long module_id) {
+		this.module_id = module_id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+	
+}

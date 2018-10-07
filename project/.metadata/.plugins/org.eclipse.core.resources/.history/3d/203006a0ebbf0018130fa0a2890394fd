@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>This is a index page</h1>
+<a href="/scm-app/spa/partial-views/Login.html">Click here to login</a>
+</body>
+</html>

@@ -1,0 +1,176 @@
+package com.techlabs.action;
+
+import java.util.List;
+
+import org.apache.struts2.ServletActionContext;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.techlabs.entity.Contact;
+import com.techlabs.entity.Partner;
+import com.techlabs.entity.Tenant;
+import com.techlabs.repository.TenantRepo;
+import com.techlabs.service.PartnerService;
+import com.techlabs.service.TenantService;
+
+public class RegistrationAction extends ActionSupport {
+
+	WebApplicationContext context = WebApplicationContextUtils
+			.getRequiredWebApplicationContext(ServletActionContext
+					.getServletContext());
+
+	private TenantService tenantservice = (TenantService) context
+			.getBean("tenantservice");
+
+	private PartnerService partnerservice = (PartnerService) context
+			.getBean("partnerservice");
+	private PartnerService contactservice = (ContactService) context
+			.getBean("contactservice");
+
+	
+	private String fname;
+	private String lname;
+	private long contact;
+	private String email;
+	private String tenant_name;
+	private String address;
+	private String city;
+	private String state;
+	private int pincode;
+	private String country;
+	private String url;
+	private String currency;
+	private boolean isurlExisted;
+
+	@Override
+	public String execute() {
+
+		System.out.println("coming to execute method");
+//		long tenant_id = tenantservice.generateTanantId();
+//		Tenant newtenant = new Tenant(tenant_id, tenant_name, address, city,
+//				state, pincode, country, url, currency);
+//		isurlExisted = tenantservice.checkTanantURLExists(url);
+//		if (!isurlExisted) {
+//			System.out.println("Tenant does not exist");
+//
+//			List<Partner> partners = partnerservice.getAllPartners();
+//			System.out.println("List of partners are " + partners);
+//
+//			Partner partner = partnerservice.getRandomPartner(partners);
+//			System.out.println("Random partner is " + partner);
+//
+//			newtenant.setPartner(partner);
+//			tenantservice.createNewtenant(newtenant);
+//			
+//			
+//			return "success";
+//		} else {
+//			
+//		}
+//
+		long tenant_id=Long.parseLong("5781958556571840582");
+		Tenant tenant=tenantservice.getTenantById(tenant_id);
+		
+		long id = contactservice.generatecontactId();
+		Contact contact=new Contact(id, fname, lname, contact_no, email, tenant)
+		return "success";
+	}
+
+	public String getTenant_name() {
+		return tenant_name;
+	}
+
+	public void setTenant_name(String tenant_name) {
+		this.tenant_name = tenant_name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public int getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(int pincode) {
+		this.pincode = pincode;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	public String getFname() {
+		return fname;
+	}
+
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+
+	public String getLname() {
+		return lname;
+	}
+
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+
+	public long getContact() {
+		return contact;
+	}
+
+	public void setContact(long contact) {
+		this.contact = contact;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+}

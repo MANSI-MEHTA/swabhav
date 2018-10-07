@@ -1,0 +1,19 @@
+package com.techlabs.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Partner")
+public class Partner {
+
+	@Id
+	Column(name="partner_id")
+	private long partner_id;
+	
+	private String name;
+	private Tenant tenant;
+	private Company company;
+}

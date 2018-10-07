@@ -1,0 +1,73 @@
+package com.techlabs.action;
+
+import org.apache.struts2.ServletActionContext;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.techlabs.entity.Credential;
+import com.techlabs.service.LoginService;
+
+public class LoginAction extends ActionSupport {
+	WebApplicationContext context = WebApplicationContextUtils
+			.getRequiredWebApplicationContext(ServletActionContext
+					.getServletContext());
+
+	private LoginService loginservice = (LoginService) context
+			.getBean("loginservice");
+
+	private String username;
+	private String password;
+	private String tenant_id=null;
+	private boolean authstatus;
+
+	@Override
+	public String execute() {
+		System.out.println("coming to execute method");
+		Credential credential = loginservice.authenticate(username, password);
+		if(credential==null){
+			authstatus = false;
+			return "success";
+		}
+		authstatus = true;
+		tenant_id=String.valueOf(credential.getCust_id());
+	
+		return "success";
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getTenant_id() {
+		return tenant_id;
+	}
+
+	public void setTenant_id(String tenant_id) {
+		this.tenant_id = tenant_id;
+	}
+
+	public boolean isAuthstatus() {
+		return authstatus;
+	}
+
+	public void setAuthstatus(boolean authstatus) {
+		this.authstatus = authstatus;
+	}
+
+	
+	
+	
+}

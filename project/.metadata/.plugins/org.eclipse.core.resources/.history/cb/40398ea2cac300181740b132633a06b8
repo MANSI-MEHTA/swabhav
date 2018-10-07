@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="table-responsive">
+		<table class="table table-bordered">
+			<tr>
+				<th>SubscriptionID</th>
+				<th>Partner</th>
+				<th>Tenant</th>
+				<th>Type</th>
+				<th>Users</th>
+				<th>Module</th>
+				<th>Services</th>
+				<th>status</th>
+				<th>Change Status</th>
+			</tr>
+			<tr ng-repeat="x in subscriptions">
+				<td>{{x.sub_id}}</td>
+				<td>{{x.tenant.partner.name}}</td>
+				<td>{{x.tenant.tenant_name}}</td>
+				<td>{{x.type}}</td>
+				<td>{{x.no_of_user}}</td>
+				<td><span ng-repeat="module in x.modules">{{module.name}},</span>
+				</td>
+				<td><span ng-repeat="service in x.services">{{service.name}},</span>
+				</td>
+				<td>{{x.status}}</td>
+
+				<td ng-if="x.status|checkstatus"><button class="btn btn-success" ng-click=approveSubscription(x.sub_id)>approve</button> <button class="btn btn-danger">reject</button></td>
+				<td ng-if="!(x.status|checkstatus)"><a
+					href="/scm-app/reject?sub_id={{x.sub_id}}">reject</a></td>
+						
+			</tr>
+
+		</table>
+		<h1>this is view subscription page</h1>
+	</div>

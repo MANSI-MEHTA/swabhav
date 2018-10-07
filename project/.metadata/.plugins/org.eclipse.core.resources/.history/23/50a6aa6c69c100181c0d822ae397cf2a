@@ -1,0 +1,24 @@
+package com.techlabs.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.techlabs.repository.LoginRepo;
+
+@Service("loginservice")
+public class LoginService {
+
+	@Autowired
+	private LoginRepo login_repo;
+
+	public LoginRepo getLogin_repo() {
+		return login_repo;
+	}
+
+	@Autowired
+	public void setLogin_repo(LoginRepo login_repo) {
+		this.login_repo = login_repo;
+	}
+	
+	
+}

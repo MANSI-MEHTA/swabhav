@@ -1,0 +1,40 @@
+package com.techlabs.repository;
+
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.techlabs.entity.Module;
+
+@Repository
+public class SupportRepo {
+	
+	@Autowired
+	private SessionFactory factory;
+
+	public List<Module> GetAllModules() {
+		List<Module> modules = null;
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+		Query query = hbsession.createQuery("FROM Module");
+		modules = query.list();
+		hbsession.getTransaction().commit();
+		hbsession.close();
+		return modules;
+
+	}
+
+	public SessionFactory getFactory() {
+		return factory;
+	}
+
+	@Autowired
+	public void setFactory(SessionFactory factory) {
+		this.factory = factory;
+	}
+
+}

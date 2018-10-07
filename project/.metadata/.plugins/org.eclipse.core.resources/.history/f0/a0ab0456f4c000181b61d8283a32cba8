@@ -1,0 +1,42 @@
+package com.techlabs.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Credential")
+public class Credential{
+	
+	@Id
+	@Column(name="cust_id")
+	private long cust_id;
+	
+	@Column(name="username")
+	private String username;
+	
+	@Column(name="password")
+	private String password;
+	
+	@MapsId
+	@OneToOne
+	@JoinColumn(name="tenant_id")
+	private Tenant tenant;
+
+	public Credential(long cust_id, String username, String password,
+			Tenant tenant) {
+		super();
+		this.cust_id = cust_id;
+		this.username = username;
+		this.password = password;
+		this.tenant = tenant;
+	}
+	
+	
+	
+
+}

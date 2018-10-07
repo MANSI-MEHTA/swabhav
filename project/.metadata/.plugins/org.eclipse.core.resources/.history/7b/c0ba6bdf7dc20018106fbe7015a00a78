@@ -1,0 +1,68 @@
+package com.techlabs.repository;
+
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.techlabs.entity.Subscription;
+
+@Repository
+public class SubscriptionRepo {
+
+	@Autowired
+	private SessionFactory factory;
+
+	public void saveSubscription(Subscription subscription) {
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+		hbsession.save(subscription);
+		hbsession.getTransaction().commit();
+		hbsession.close();
+
+	}
+
+	public List<Subscription> getAllSubscriptionOfTenant(String tenant_id) {
+	
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+
+		Query query = hbsession
+				.createQuery("FROM Subscription WHERE tenant_id=:id");
+		query.setParameter("id", tenant_id);
+
+		List<Subscription> subscriptions = query.list();
+		hbsession.getTransaction().commit();
+		
+		return subscriptions;
+
+	}
+	public List<Subscription> getAllSubscriptions() {
+		
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+
+		Query query = hbsession
+				.createQuery("FROM Subscription WHERE tenant_id=:id");
+		query.setParameter("id", tenant_id);
+
+		List<Subscription> subscriptions = query.list();
+		hbsession.getTransaction().commit();
+		
+		return subscriptions;
+
+	}
+
+	public SessionFactory getFactory() {
+		return factory;
+	}
+
+	@Autowired
+	public void setFactory(SessionFactory factory) {
+		this.factory = factory;
+	}
+
+}

@@ -1,0 +1,8 @@
+package com.techlabs.service;
+
+import org.springframework.stereotype.Service;
+
+@Service("tenantservice")
+public class TenantService {
+
+}

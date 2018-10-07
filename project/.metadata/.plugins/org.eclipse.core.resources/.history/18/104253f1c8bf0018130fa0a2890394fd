@@ -1,0 +1,25 @@
+package com.techlabs.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Tenant")
+public class Tenant {
+
+	private long tenant_id;
+	private String tenant_name;
+	private String address;
+	private String city;
+	private String state;
+	private int pincode;
+	private String country;
+	private String website_url;
+	private String currency;
+	private Set<Partner> partners=new HashSet<Partner>();
+	private Set<Subscription> subscrition=new HashSet<Subscription>();
+	
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="angular.js"></script>
+    <script src="angular-route.js"></script>
+    <script src="scm.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        form {
+            border: 3px solid #f1f1f1;
+            width: 50%;
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            margin-left: 10px;
+        }
+
+        label {
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container" ng-app="scm-app">
+        <div ng-controller="homeController ">
+            <div class="row">
+                <div class="col-sm-12 ">
+             
+               		<a ng-if="!authenticated" class="page-scroll btn btn-primary" style="display:inline-block" href="#login/">Login</a>
+                    <a ng-if="!authenticated" class="page-scroll btn btn-primary" style="display:inline-block" href="#signup/">Signup</a>
+                    <a ng-if="!authenticated" class="page-scroll btn btn-primary" style="display:inline-block" href="#adminlogin/">Admin</a>
+                    <a ng-if="authenticated" class="page-scroll btn btn-danger" style="display:inline-block" href="#logout/">logout</a>
+                    
+                </div>
+            </div>
+            <br>
+            <section ng-view>
+
+            </section>
+
+</body>
+
+</html>

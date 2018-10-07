@@ -1,0 +1,31 @@
+package com.techlabs.service;
+
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.techlabs.repository.TenantRepo;
+
+@Service("tenantservice")
+public class TenantService {
+
+	@Autowired
+	private TenantRepo tenant_repo;
+
+	public boolean checkTanantURLExists(String url){
+		return this.tenant_repo.checkTanantURLExists(url);
+	}
+	public long generateTanantId(){
+		return Math.abs(UUID.randomUUID().getMostSignificantBits());
+	}
+	public TenantRepo getTenant_repo() {
+		return tenant_repo;
+	}
+	
+	@Autowired
+	public void setTenant_repo(TenantRepo tenant_repo) {
+		this.tenant_repo = tenant_repo;
+	}
+	
+}

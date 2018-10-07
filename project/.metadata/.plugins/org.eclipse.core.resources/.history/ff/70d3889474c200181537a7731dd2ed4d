@@ -1,0 +1,29 @@
+<div class="container">
+<h1>this is view subscription page</h1>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tr>
+                <th>SubscriptionID</th>
+                <th>Type</th>
+                <th>Users</th>
+                <th>Module</th>
+                <th>Services</th>
+                <th>status</th>
+
+            </tr>
+            <tr ng-repeat="x in subscriptions">
+                <td>{{x.sud_id}}</td>
+                <td>{{x.type}}</td>
+                <td>{{x.no_of_user}}</td>
+                <td ng-repeat="module in x.modules">
+                    {{module.name}}<span>,</span>
+                </td>
+                <td ng-repeat="service in x.services">
+                    {{service.name}}<span>,</span>
+                </td>
+                
+            </tr>
+
+        </table>
+        
+    </div>

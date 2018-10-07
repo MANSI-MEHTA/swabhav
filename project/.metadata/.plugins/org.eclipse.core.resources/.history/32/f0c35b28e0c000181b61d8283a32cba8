@@ -1,0 +1,194 @@
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="scm.js"></script>
+<script src="angular.js"></script>
+<script src="angular-route.js"></script>
+
+<style>
+form {
+	border: none;
+	width: 50%;
+}
+
+input[type=text], input[type=password], input[type=number] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	margin-left: 10px;
+}
+
+label {
+	margin-top: 00px;
+	margin-left: 10px;
+}
+</style>
+
+</head>
+
+<article>
+	<h3>General Information</h3>
+	<hr>
+	<h4>Tenant Details</h4>
+	<hr>
+	<div class="container">
+		<form name="tenantDetailsForm" novalidate>
+			<div class="form-group">
+
+				<label class="control-label col-sm-4">Full Name*:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control"
+						ng-model="tenant.tenant_name" placeholder="Enter Full Name"
+						value=""
+						name="name" required>
+						<span style="color:red" ng-show="tenantDetailsForm.tenant.tenant_name.$dirty && tenantDetailsForm.name.$invalid">
+
+            <span ng-show="tenantDetailsForm.name.$error.required">First name is required</span>
+				</div>
+
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-4">Address*:</label>
+				<div class="col-sm-10">
+					<textarea rows="4" cols="30" ng-model="tenant.address"
+						name="address"></textarea>
+				</div>
+
+			</div>
+
+			<div class="form-group">
+
+				<label class="control-label col-sm-4">City*:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" ng-model="tenant.city"
+						placeholder="Enter City" value=""
+						ng-class="{red:signupform.name.$touched,white:signupform.name.$valid}"
+						name="city" required>
+				</div>
+
+			</div>
+			<div class="form-group">
+
+				<label class="control-label col-sm-4">State*:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" ng-model="tenant.state"
+						placeholder="Enter state" value=""
+						ng-class="{red:signupform.name.$touched,white:signupform.name.$valid}"
+						name="state" required>
+				</div>
+
+			</div>
+			<div class="form-group">
+
+				<label class="control-label col-sm-4">Pincode*:</label>
+				<div class="col-sm-10">
+					<input type="number" class="form-control" ng-model="tenant.pincode"
+						placeholder="Enter pincode" value=""
+						ng-class="{red:signupform.name.$touched,white:signupform.name.$valid}"
+						name="pincode" required>
+				</div>
+
+			</div>
+			<div class="form-group">
+
+				<label class="control-label col-sm-4">Country Name*:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" ng-model="tenant.country"
+						placeholder="Enter country Name" value=""
+						ng-class="{red:signupform.name.$touched,white:signupform.name.$valid}"
+						name="country" required>
+				</div>
+
+			</div>
+
+			<div class="form-group">
+
+				<label class="control-label col-sm-4">company Website url*:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" ng-model="tenant.url"
+						placeholder="Enter Your website url" value=""
+						ng-class="{red:signupform.name.$touched,white:signupform.name.$valid}"
+						name="url" required>
+				</div>
+
+			</div>
+
+
+			<div class="form-group">
+
+				<label class="control-label col-sm-4">Curreny:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" ng-model="tenant.currency"
+						placeholder="Enter your currency" value=""
+						ng-class="{red:signupform.name.$touched,white:signupform.name.$valid}"
+						name="currency" required>
+				</div>
+
+			</div>
+		</form>
+	</div>
+	<div class="container">
+		<h4>Primary Details</h4>
+		<hr>
+		<form name="primaryContactForm" ng-submit="getDetails()" novalidate>
+			<div class="form-group">
+
+				<label class="control-label col-sm-4">First Name*:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" ng-model="tenant.fname"
+						placeholder="Enter First Name" value=""
+						ng-class="{red:signupform.name.$touched,white:signupform.name.$valid}"
+						name="fname" required>
+				</div>
+
+			</div>
+			<div class="form-group">
+
+				<label class="control-label col-sm-4">Last Name*:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" ng-model="tenant.lname"
+						placeholder="Enter Last Name" value=""
+						ng-class="{red:signupform.name.$touched,white:signupform.name.$valid}"
+						name="lname" required>
+				</div>
+
+			</div>
+			<div class="form-group">
+
+				<label class="control-label col-sm-4">Contact*:</label>
+				<div class="col-sm-10">
+					<input type="number" class="form-control" ng-model="tenant.contact"
+						placeholder="Enter contact number" value=""
+						ng-class="{red:signupform.name.$touched,white:signupform.name.$valid}"
+						name="contact" required>
+				</div>
+
+			</div>
+
+			<div class="form-group">
+
+				<label class="control-label col-sm-4">Email*:</label>
+				<div class="col-sm-10">
+					<input type="email" class="form-control" ng-model="tenant.email"
+						placeholder="Enter email" value=""
+						ng-class="{red:signupform.name.$touched,white:signupform.name.$valid}"
+						name="email" required>
+				</div>
+
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-10">
+					<input type="submit" value="save"
+						class="btn btn-primary form-control">
+				</div>
+
+			</div>
+
+		</form>
+	</div>
+</article>

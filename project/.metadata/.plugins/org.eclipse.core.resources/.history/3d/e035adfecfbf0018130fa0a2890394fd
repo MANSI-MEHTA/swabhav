@@ -1,0 +1,48 @@
+package com.techlabs.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Company")
+public class Company {
+
+	@Id
+	@Column(name="cmp_id")
+	private long cmp_id;
+	
+	@Column(name="username")
+	private String username;
+	
+	@Column(name="password")
+	private String password;
+	
+	@OneToMany(mappedBy="company",cascade = CascadeType.ALL)
+	private Set<Partner> partners=new HashSet<Partner>();
+	
+	@OneToMany(mappedBy="company",cascade = CascadeType.ALL)
+	private Set<Module> module=new HashSet<Module>();
+	
+	@OneToMany(mappedBy="company",cascade = CascadeType.ALL)
+	private Set<Service> services=new HashSet<Service>();
+	
+	public Company(){
+		
+	}
+
+	public Company(long cmp_id, String username, String password) {
+		super();
+		this.cmp_id = cmp_id;
+		this.username = username;
+		this.password = password;
+	}
+	
+	
+}

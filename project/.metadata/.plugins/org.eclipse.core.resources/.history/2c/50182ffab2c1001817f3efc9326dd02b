@@ -1,0 +1,9 @@
+package com.techlabs.service;
+
+import org.springframework.stereotype.Service;
+
+@Service("subscriptionservice")
+public class SubscriptionService {
+
+		
+}

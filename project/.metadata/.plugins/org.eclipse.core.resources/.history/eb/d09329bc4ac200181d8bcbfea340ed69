@@ -1,0 +1,33 @@
+package com.techlabs.repository;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.techlabs.entity.Subscription;
+
+@Repository
+public class SubscriptionRepo {
+
+	@Autowired
+	private SessionFactory factory;
+
+	public void saveSubscription(Subscription subscription){
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+		hbsession.save(subscription);
+		hbsession.getTransaction().commit();
+		hbsession.close();
+
+	}
+	public SessionFactory getFactory() {
+		return factory;
+	}
+
+	@Autowired
+	public void setFactory(SessionFactory factory) {
+		this.factory = factory;
+	}
+
+}

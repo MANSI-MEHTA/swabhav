@@ -1,0 +1,39 @@
+package com.techlabs.action;
+
+import org.apache.struts2.ServletActionContext;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.techlabs.entity.Subscription;
+import com.techlabs.service.SubscriptionService;
+
+public class RejectAction extends ActionSupport{
+	
+	WebApplicationContext context = WebApplicationContextUtils
+			.getRequiredWebApplicationContext(ServletActionContext
+					.getServletContext());
+
+	private SubscriptionService subscriptionservice = (SubscriptionService) context
+			.getBean("subscriptionservice");
+
+	@Override
+	public String execute() {
+		System.out.println("coming to reject action");
+
+		System.out.println(ServletActionContext.getRequest().getParameter(
+				"sub_id"));
+		String sub_id = ServletActionContext.getRequest()
+				.getParameter("sub_id");
+		System.out.println("subscription id from request "+sub_id);
+		Subscription subscription = subscriptionservice
+				.getSubscriptionById(sub_id);
+		subscription.setStatus("reject");
+
+		subscriptionservice.changeStateToReject(subscription);
+
+		return "success";
+	}
+
+
+}

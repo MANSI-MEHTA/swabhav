@@ -1,0 +1,54 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="angular.js"></script>
+    <script src="angular-route.js"></script>
+    
+    <style>
+        form {
+            border: 3px solid #f1f1f1;
+            width: 50%;
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            margin-left: 10px;
+        }
+
+        label {
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+    </style>
+
+</head>
+
+<article>
+    <div>
+        <form name="loginForm" novalidate>
+
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <div>
+                    <input type="text" class="form-control " id="username" placeholder="Enter username" name="username" ng-class="{red:signupform.name.$touched,white:signupform.name.$valid}">
+                </div>
+                <span ng-show="loginForm.username.$touched && loginForm.uername.$invalid" style="color: red">User Name is required*</span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <div>
+                    <input type="password" class="form-control " id="password" placeholder="Enter password" name="password">
+                </div>
+                <span ng-show="loginForm.password.$touched && loginForm.password.$invalid" style="color: red">Password is required*</span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</article>

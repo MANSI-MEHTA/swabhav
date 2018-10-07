@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tr>
+                <th>SubscriptionID</th>
+                <th>Type</th>
+                <th>Users</th>
+                <th>Module</th>
+                <th>Services</th>
+                <th>status</th>
+
+            </tr>
+            <tr ng-repeat="x in subscriptions">
+                <td>{{x.sud_id}}</td>
+                <td>{{x.type}}</td>
+                <td>{{x.no_of_user}}</td>
+                <td ng-repeat="module in x.modules">
+                    {{module.name}}<span>,</span>
+                </td>
+                <td ng-repeat="service in x.services">
+                    {{service.name}}<span>,</span>
+                </td>
+                <td>
+                    <a ng-show="!authenticated" href="#login" class="btn btn-primary">-</a>
+                    <a ng-show="authenticated" href="#edit/{{x.rollno}}" class="btn btn-primary">EDIT</a>
+
+
+
+                </td>
+                <td>
+                    <a ng-show="authenticated" href="#delete/{{x.rollno}}" class="btn btn-danger">Delete</a>
+                    <a ng-show="!authenticated" href="#login" class="btn btn-danger">X</a>
+
+                </td>
+
+            </tr>
+
+        </table>
+        <h1>this is view subscription page</h1>
+    </div>

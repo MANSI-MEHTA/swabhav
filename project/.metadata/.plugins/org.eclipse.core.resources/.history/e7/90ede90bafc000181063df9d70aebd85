@@ -1,0 +1,49 @@
+package com.techlabs.repository;
+
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.techlabs.entity.Tenant;
+
+@Repository
+public class TenantRepo {
+	@Autowired
+	private SessionFactory session;
+
+	public boolean checkTanantURLExists(String url){
+		
+		Session hbsession=session.openSession();
+		hbsession.beginTransaction();
+		Query query=hbsession.createQuery("FROM Tenant WHERE url=:url");
+		query.setParameter("url", url);
+		List<Tenant> listOfTenant=query.list();
+		hbsession.getTransaction().commit();
+		hbsession.close();
+		if(listOfTenant.isEmpty()){
+			return false;
+		}
+		
+		return true;
+		
+	}
+	public void createNewtenant(Tenant newtenant){
+		Session hbseSession=session.openSession();
+		hbseSession.beginTransaction();
+		hbsession.save(newtenant);
+	}
+
+	public SessionFactory getSession() {
+		return session;
+	}
+	@Autowired
+	public void setSession(SessionFactory session) {
+		this.session = session;
+	}
+	
+	
+}

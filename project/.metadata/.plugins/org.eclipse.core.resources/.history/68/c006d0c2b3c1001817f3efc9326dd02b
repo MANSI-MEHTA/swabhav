@@ -1,0 +1,23 @@
+package com.techlabs.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.techlabs.repository.SupportRepo;
+
+@Service("supportservice")
+public class SupportService {
+
+	@Autowired
+	private SupportRepo support_repo;
+
+	public SupportRepo getSupport_repo() {
+		return support_repo;
+	}
+
+	@Autowired
+	public void setSupport_repo(SupportRepo support_repo) {
+		this.support_repo = support_repo;
+	}
+	
+}

@@ -1,8 +1,0 @@
-package com.techlabs.model;
-
-public class LineItem {
-	private String id;
-	private int quantity;
-	private double total_price;
-	private String product_id;
-}

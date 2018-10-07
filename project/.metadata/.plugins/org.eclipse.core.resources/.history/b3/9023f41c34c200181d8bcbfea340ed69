@@ -1,0 +1,95 @@
+package com.techlabs.action;
+
+import java.util.List;
+
+import org.apache.struts2.ServletActionContext;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.techlabs.entity.Module;
+import com.techlabs.entity.Service;
+import com.techlabs.service.ModuleService;
+import com.techlabs.service.SubscriptionService;
+import com.techlabs.service.SupportService;
+
+public class SubscriptionAction extends ActionSupport {
+	WebApplicationContext context = WebApplicationContextUtils
+			.getRequiredWebApplicationContext(ServletActionContext
+					.getServletContext());
+
+	private SubscriptionService subscriptionservice = (SubscriptionService) context
+			.getBean("subscriptionservice");
+	private ModuleService moduleservice = (ModuleService) context
+			.getBean("moduleservice");
+	private SupportService supportservice = (SupportService) context
+			.getBean("supportservice");
+	private List<Module> modules;
+	private List<Service> listofservices;
+	private List<String> selectedservices;
+	private List<String> selectedmodules;
+	private int no_of_user;
+	private String type;
+
+	@Override
+	public String execute() {
+		System.out.println("coming to subscription action execute method");
+		modules = moduleservice.GetAllModules();
+		listofservices = supportservice.GetAllSupportService();
+		return "success";
+	}
+
+	public String saveSubscription() {
+		return "success";
+	}
+
+	public List<Module> getModules() {
+		return modules;
+	}
+
+	public void setModules(List<Module> modules) {
+		this.modules = modules;
+	}
+
+	public List<Service> getListofservices() {
+		return listofservices;
+	}
+
+	public void setListofservices(List<Service> listofservices) {
+		this.listofservices = listofservices;
+	}
+
+	public List<String> getSelectedservices() {
+		return selectedservices;
+	}
+
+	public void setSelectedservices(List<String> selectedservices) {
+		this.selectedservices = selectedservices;
+	}
+
+	public List<String> getSelectedmodules() {
+		return selectedmodules;
+	}
+
+	public void setSelectedmodules(List<String> selectedmodules) {
+		this.selectedmodules = selectedmodules;
+	}
+
+	public int getNo_of_user() {
+		return no_of_user;
+	}
+
+	public void setNo_of_user(int no_of_user) {
+		this.no_of_user = no_of_user;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+
+}

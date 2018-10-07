@@ -1,0 +1,54 @@
+package com.techlabs.action;
+
+import java.util.List;
+
+import org.apache.struts2.ServletActionContext;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.techlabs.entity.Module;
+import com.techlabs.entity.Service;
+import com.techlabs.service.ModuleService;
+import com.techlabs.service.SubscriptionService;
+import com.techlabs.service.SupportService;
+
+public class SubscriptionAction extends ActionSupport {
+	WebApplicationContext context = WebApplicationContextUtils
+			.getRequiredWebApplicationContext(ServletActionContext
+					.getServletContext());
+
+	private SubscriptionService subscriptionservice = (SubscriptionService) context
+			.getBean("subscriptionservice");
+	private ModuleService moduleservice = (ModuleService) context
+			.getBean("moduleservice");
+	private SupportService supportservice = (SupportService) context
+			.getBean("supportservice");
+	private List<Module> modules;
+	private List<Service> listofservices;
+
+	@Override
+	public String execute() {
+		modules=moduleservice.GetAllModules();
+		listofservices=supportservice.GetAllSupportService();
+		return "success";
+	}
+
+	public List<Module> getModules() {
+		return modules;
+	}
+
+	public void setModules(List<Module> modules) {
+		this.modules = modules;
+	}
+
+	public List<Service> getListofservices() {
+		return listofservices;
+	}
+
+	public void setListofservices(List<Service> listofservices) {
+		this.listofservices = listofservices;
+	}
+
+	
+}

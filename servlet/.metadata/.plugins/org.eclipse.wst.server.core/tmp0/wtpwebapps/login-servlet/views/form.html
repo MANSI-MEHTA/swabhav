@@ -1,0 +1,74 @@
+<!Doctype>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        form {
+            border: 3px solid #f1f1f1;
+            width:500px
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        label {
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body>
+ <article>
+        <h2>Login Form</h2>
+
+        <form name="loginForm" method="POST" action="/login-servlet/login" novalidate>
+
+            <div class="container">
+                <div class="row">
+                    <div class="form-group" class="control-label col-sm-2">
+                        <label class="control-label col-sm-2" for="username">
+                            <b>Username*</b>
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="text" placeholder="Enter Username" name="username" value="">
+                        </div>
+
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="password" class="control-label col-sm-2">
+                            <b>Password*</b>
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="password" placeholder="Enter Password" name="password" value="">
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="form-group">
+                        <input type="submit" style="margin-left:50px " class="btn btn-primary " style="width:150px" value="Login">
+                    </div>
+                </div>
+
+
+            </div>
+
+        </form>
+    </article>
+
+</body>
+</html>

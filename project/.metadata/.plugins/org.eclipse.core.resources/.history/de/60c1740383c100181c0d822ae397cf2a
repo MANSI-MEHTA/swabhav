@@ -1,0 +1,43 @@
+package com.techlabs.repository;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.techlabs.entity.Company;
+import com.techlabs.entity.Credential;
+
+@Repository
+public class CompanyRepo {
+
+	@Autowired
+	private SessionFactory factory;
+
+	
+	public Company authenticate(String username,String password){
+		Company companyperson =null;
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+		Query query = hbsession.createQuery("FROM Credential WHERE username=:user AND password=:pass");
+		query.setParameter("user", username);
+		query.setParameter("pass", password);
+		
+		credential = (Credential) query.uniqueResult();
+		hbsession.getTransaction().commit();
+		hbsession.close();
+		
+		return credential;
+	}
+	public SessionFactory getFactory() {
+		return factory;
+	}
+
+	@Autowired
+	public void setFactory(SessionFactory factory) {
+		this.factory = factory;
+	}
+	
+	
+}

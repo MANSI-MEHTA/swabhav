@@ -1,0 +1,24 @@
+package com.techlabs.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.techlabs.repository.CompanyRepo;
+
+@Service("companyservice")
+public class CompanyService {
+
+	@Autowired
+	private CompanyRepo company_repo;
+
+	public CompanyRepo getCompany_repo() {
+		return company_repo;
+	}
+
+	@Autowired
+	public void setCompany_repo(CompanyRepo company_repo) {
+		this.company_repo = company_repo;
+	}
+	
+	
+}

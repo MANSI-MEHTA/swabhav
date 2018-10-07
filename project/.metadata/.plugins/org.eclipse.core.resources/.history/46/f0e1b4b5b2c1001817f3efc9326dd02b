@@ -1,0 +1,31 @@
+package com.techlabs.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.techlabs.entity.Module;
+import com.techlabs.repository.SubscriptionRepo;
+
+@Service("subscriptionservice")
+public class SubscriptionService {
+
+	@Autowired
+	private SubscriptionRepo subscription_repo;
+
+	
+	public List<Module> GetAllModules(){
+		return this.subscription_repo.GetAllModules();
+	}
+	public SubscriptionRepo getSubscription_repo() {
+		return subscription_repo;
+	}
+
+	@Autowired
+	public void setSubscription_repo(SubscriptionRepo subscription_repo) {
+		this.subscription_repo = subscription_repo;
+	}
+	
+	
+}

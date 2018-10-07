@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.SlashesInActionNames" value="">.
+	</constant>
+	<constant name="struts.mapper.action.prefix.enabled" value="true" />
+
+	<package name="default" namespace="/" extends="struts-default,json-default">
+
+
+		<action name="" class="">
+			<result name="success">/views/spa/index.html</result>
+		</action>
+		<action name="register" class="com.techlabs.action.RegistrationAction"
+			method="execute">
+			<interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+
+			<result type="json">
+
+			</result>
+		</action>
+		<action name="savecredentials" class="com.techlabs.action.RegistrationAction"
+			method="saveDetails">
+			<interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+
+			<result type="json">
+
+			</result>
+		</action>
+		<action name="authenticate" class="com.techlabs.action.LoginAction"
+			method="execute">
+			<interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+
+			<result type="json">
+
+			</result>
+		</action>
+		<action name="authenticateadmin" class="com.techlabs.action.AdminAction"
+			method="execute">
+			<interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+
+			<result type="json">
+
+			</result>
+		</action>
+		<action name="getmoduleandsupport" class="com.techlabs.action.SubscriptionAction"
+			method="execute">
+			<interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+
+			
+			<result type="json">
+
+			</result>
+		</action>
+		<action name="savesubscription" class="com.techlabs.action.SubscriptionAction"
+			method="saveSubscription">
+			<interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+
+			
+			<result type="json">
+
+			</result>
+		</action>
+
+		<action name="viewsubscription" class="com.techlabs.action.ViewSubscriptionAction"
+			method="execute">
+
+			<result type="json">
+
+			</result>
+		</action>
+		<action name="getallsubscriptions" class="com.techlabs.action.AdminViewAction"
+			method="execute">
+
+			<result type="json">
+
+			</result>
+		</action>
+
+		<action name="approve" class="com.techlabs.action.ApproveAction"
+			method="execute">
+
+			<result name="success" >
+
+			</result>
+		</action>
+
+
+
+
+	</package>
+</struts>

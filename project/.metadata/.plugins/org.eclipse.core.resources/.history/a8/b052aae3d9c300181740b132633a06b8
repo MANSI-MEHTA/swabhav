@@ -1,0 +1,105 @@
+package com.techlabs.repository;
+
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.techlabs.entity.Subscription;
+
+@Repository
+public class SubscriptionRepo {
+
+	@Autowired
+	private SessionFactory factory;
+
+	public void saveSubscription(Subscription subscription) {
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+		hbsession.save(subscription);
+		hbsession.getTransaction().commit();
+		hbsession.close();
+
+	}
+
+	public List<Subscription> getAllSubscriptionOfTenant(String tenant_id) {
+
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+
+		Query query = hbsession
+				.createQuery("FROM Subscription WHERE tenant_id=:id");
+		query.setParameter("id", tenant_id);
+
+		List<Subscription> subscriptions = query.list();
+		hbsession.getTransaction().commit();
+
+		return subscriptions;
+
+	}
+
+	public List<Subscription> getAllSubscriptions() {
+
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+
+		Query query = hbsession
+				.createQuery("FROM Subscription WHERE status=:approve OR status=:reject OR status=:pending");
+		query.setParameter("approve", "approve");
+		query.setParameter("reject", "reject");
+		query.setParameter("reject", "pending");
+		
+		List<Subscription> subscriptions = query.list();
+		hbsession.getTransaction().commit();
+
+		return subscriptions;
+
+	}
+
+	public void changeStateToApprove(Subscription subscription) {
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+		hbsession.update(subscription);
+		hbsession.getTransaction().commit();
+		hbsession.close();
+
+	}
+
+	public void changeStateToReject(Subscription subscription) {
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+		hbsession.update(subscription);
+		hbsession.getTransaction().commit();
+		hbsession.close();
+
+	}
+
+	public Subscription getSubscriptionById(String sub_id) {
+		Subscription subscription = null;
+
+		Session hbsession = factory.openSession();
+		hbsession.beginTransaction();
+
+		Query query = hbsession
+				.createQuery("FROM Subscription WHERE sub_id=:id");
+		query.setParameter("id", sub_id);
+
+		subscription = (Subscription) query.uniqueResult();
+		hbsession.getTransaction().commit();
+		hbsession.close();
+		return subscription;
+	}
+
+	public SessionFactory getFactory() {
+		return factory;
+	}
+
+	@Autowired
+	public void setFactory(SessionFactory factory) {
+		this.factory = factory;
+	}
+
+}

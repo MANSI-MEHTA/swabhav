@@ -1,0 +1,19 @@
+package com.techlabs.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Company")
+public class Company {
+
+	private long cmp_id;
+	private String username;
+	private String password;
+	private Set<Partner> partners=new HashSet<Partner>();
+	private Set<Module> module=new HashSet<Module>();
+	private Set<Service> services=new 
+}
